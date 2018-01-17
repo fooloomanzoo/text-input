@@ -229,7 +229,7 @@
 
       _inputChanged(input) {
         if (input === undefined) return;
-        console.log('_inputChanged', input);
+        
         if (!(this._validationRegExp && this._validationRegExp.exec(input) === null)) {
           this.value = input;
         }
@@ -237,7 +237,7 @@
 
       _valueChanged(value, oldValue) {
         if (value === undefined) return;
-        console.log('_valueChanged', value);
+
         if (!(this._validationRegExp && this._validationRegExp.exec(value) === null)) {
           this.input = value;
         } else if (oldValue !== undefined && this._validationRegExp.exec(oldValue) !== null) {
