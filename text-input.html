@@ -1,0 +1,340 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<script>
+  /**
+   * mixin to create a text-input
+   *
+   *
+   * @mixinFunction
+   * @polymer
+   */
+  const TextInputMixin = (superClass) => { // eslint-disable-line no-unused-vars
+
+    return class extends superClass {
+
+      static get template() {
+        return `
+          ${this.styleTemplate}
+          ${this.contentTemplate}
+        `;
+      }
+
+      static get styleTemplate() {
+        return `
+          <style>
+            :host {
+              display: inline-flex;
+              box-sizing: content-box;
+              --text-input: {
+                @apply --input-style;
+              };
+              --text-input-focus: {
+                @apply --input-focus;
+              };
+              padding: 0 !important;
+            }
+            #input:focus {
+              outline: none;
+            }
+            #input {
+              font-family: inherit;
+              font-size: inherit;
+              font-weight: inherit;
+              text-align: var(--text-input-allign, var(--input-allign, left));
+              overflow: visible;
+              border-color: transparent;
+              box-sizing: content-box;
+              color: var(--text-input-color, var(--input-color, inherit));
+              background: var(--text-input-background, var(--input-background, inherit));
+              @apply --text-input;
+            }
+            #input::placeholder {
+              @apply --text-input-placeholder;
+            }
+            #input:hover,
+            #input:focus {
+              color: var(--text-input-focus-color, var(--input-focus-color, var(--text-input-color, inherit)));
+              background: var(--text-input-focus-background, var(--input-focus-background, var(--text-input-background, inherit)));
+              @apply --text-input-focus;
+            }
+            #input:not(:valid),
+            #input:invalid {
+              @apply --text-input-invalid;
+            }
+            :host([disabled]) {
+              color: var(--text-input-disabled-color, var(--input-disabled-color, inherit));
+              @apply --input-disabled;
+            }
+          </style>
+        `;
+      }
+
+      static get contentTemplate() {
+        return `
+          <input id="input"
+            type="[[type]]"
+            value="{{input::input}}"
+            placeholder="[[placeholder]]"
+            pattern="[[pattern]]"
+            disabled="[[disabled]]"
+            autocomplete="[[autocomplete]]"
+            required="[[required]]"
+            minlength="[[minlength]]"
+            maxlength="[[maxlength]]"
+            size="[[size]]"
+            on-focusin="_checkInput"
+            on-focusout="_checkInput"
+            on-blur="_checkInput"
+            on-keydown="_checkKeycode">
+        `;
+      }
+
+      static get properties() {
+        return {
+          /**
+           * autocomplete the input
+           * @type {string}
+           */
+          autocomplete: {
+            type: Boolean
+          },
+          /**
+           * specify the type like 'password'
+           * @type {string}
+           */
+          type: {
+            type: String,
+            notify: true,
+            value: 'text'
+          },
+          /**
+           * placeholder string
+           * @type {string}
+           */
+          placeholder: {
+            type: String
+          },
+
+          /**
+           * disables the input
+           * @type {boolean}
+           */
+          disabled: {
+            type: Boolean,
+            reflectToAttribute: true
+          },
+
+          /**
+           * required attribute
+           * @type {boolean}
+           */
+          required: {
+            type: Boolean,
+            reflectToAttribute: true
+          },
+
+          /**
+           * regular expression pattern of the input
+           * @type {string}
+           */
+          pattern: {
+            type: String,
+            notify: true,
+            observer: '_patternChanged'
+          },
+
+          /**
+           * default value of the input
+           * @type {string}
+           */
+          default: {
+            type: String,
+            notify: true,
+            observer: '_inputChanged'
+          },
+
+          /**
+           * value string of the input
+           * @type {string}
+           */
+          input: {
+            type: String,
+            notify: true,
+            observer: '_inputChanged'
+          },
+
+          /**
+           * value string of the input
+           * @type {string}
+           */
+          value: {
+            type: String,
+            notify: true,
+            observer: '_valueChanged'
+          },
+
+          /**
+           * minlength of the input
+           * @type {number}
+           */
+          minlength: {
+            type: Number
+          },
+
+          /**
+           * maxlength of the input
+           * @type {number}
+           */
+          maxlength: {
+            type: Number
+          },
+
+          /**
+           * size of the input
+           * @type {number}
+           */
+          size: {
+            type: Number
+          }
+        }
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        this._ensureAttribute('tabindex', 0);
+        this.addEventListener('focus', this.focus.bind(this), false);
+      }
+
+      disconnectedCallback() {
+        super.disconnectedCallback();
+        this.removeEventListener('focus', this.focus.bind(this), false);
+      }
+
+      _checkInput() {
+        if (!(this._validationRegExp && this._validationRegExp.exec(this.$.input.value) === null)) {
+          this.input = this.value = this.$.input.value;
+        } else if (!(this._validationRegExp && this._validationRegExp.exec(this.value) === null)) {
+          this.input = this.value;
+        }
+      }
+
+      _patternChanged(pattern) {
+        if (!pattern) {
+          this._validationRegExp = null;
+          return;
+        }
+        this._validationRegExp = new RegExp(pattern);
+        this._checkInput();
+      }
+
+      _inputChanged(input) {
+        if (input === undefined) return;
+        console.log('_inputChanged', input);
+        if (!(this._validationRegExp && this._validationRegExp.exec(input) === null)) {
+          this.value = input;
+        }
+      }
+
+      _valueChanged(value, oldValue) {
+        if (value === undefined) return;
+        console.log('_valueChanged', value);
+        if (!(this._validationRegExp && this._validationRegExp.exec(value) === null)) {
+          this.input = value;
+        } else if (oldValue !== undefined && this._validationRegExp.exec(oldValue) !== null) {
+          this.value = oldValue;
+        }
+      }
+
+      _checkKeycode(e) {
+        if (!e.target) {
+          if (e && e.preventDefault) e.preventDefault();
+          return;
+        }
+
+        // enter & space
+        if (e.keyCode === 13 || e.keyCode === 32) {
+          this._checkInput();
+          return;
+        }
+
+        // esc
+        if (e.keyCode === 27) {
+          this._checkInput();
+          this.blur();
+          return;
+        }
+      }
+
+      /**
+       * focus the input
+       */
+      focus() {
+        this.$.input.focus();
+      }
+
+      /**
+       * focus the input
+       */
+      blur() {
+        this.$.input.blur();
+      }
+    }
+  }
+</script>
+
+<dom-module id="text-input">
+  <script>
+    /**
+     *  `text-input` is an element that can:
+     * * guarantee **live**-data to be valid
+     * * be styled easily
+     *
+     * Example:
+     * ```html
+     * <text-input step="2" min="-20" max="140" pad-length="2"></text-input>
+     * ```
+     *
+     * It sizes automatically. Use `key-up` and `key-down` to increment the value. If `step` is given, the value is a **multiple** of `step`.
+     *
+     * ### Styling
+     * Custom property                   | Description                                  | Default
+     * ----------------------------------|----------------------------------------------|--------------------
+     * `--text-input`                    | style of the input                           | {}
+     * `--text-input-invalid`            | style of the input                           | {}
+     * `--text-input-focus`              | style of the focussed and hovered input      | {}
+     * `--text-input-placeholder`        | style of the placeholder                     | {}
+     * `--text-input-color`              | color of the input                           | inherit
+     * `--text-input-background`         | background of the input                      | inherit
+     * `--text-input-focus-color`        | color of the focussed and hovered input      | inherit
+     * `--text-input-focus-background`   | background of the focussed and hovered input | inherit
+     * `--text-input-disabled-color`     | color of the disabled input                  | inherit
+     * `--text-input-allign`             | allignment of the text of the input          | left
+     *
+     * ```css
+     * :host {
+     *   --text-input-disabled-color: grey;
+     *   --text-input-focus-background: rgba(0,0,0,0.25);
+     *   --text-input-focus: {
+     *     font-weight: bold;
+     *   };
+     *   --text-input-placeholder: {
+     *     color: pink;
+     *   };
+     * }
+     * ```
+     * @polymer
+     * @customElement
+     *
+     * @appliesMixin TextInputMixin
+     *
+     * @demo demo/index.html
+     **/
+    class TextInput extends TextInputMixin(Polymer.Element) {
+
+      static get is() {
+        return 'text-input';
+      }
+    }
+    window.customElements.define(TextInput.is, TextInput);
+  </script>
+</dom-module>

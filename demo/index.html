@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>text-input demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../text-input.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        .result {
+          margin: 0.5em;
+          line-height: 1.5em;
+        }
+        .result * {
+          padding: 0.25em;
+        }
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <demo-snippet>
+        <h4>Simple demo</h4>
+        <template>
+          <dom-bind>
+            <template is="dom-bind">
+              <custom-style>
+                <style is="custom-style">
+                  #simple {
+                    --text-input: {
+                      background: rgba(0, 0, 0, 0.05);
+                      transition: background 150ms ease-in-out;
+                      color: #111;
+                      padding: 0.3em;
+                      border-radius: 0.2em;
+                    };
+                    --text-input-focus: {
+                      background: rgba(0, 0, 0, 0.15);
+                    };
+                    --text-input-placeholder: {
+                      color: #492020;
+                    };
+                  }
+                </style>
+              </custom-style>
+              <text-input id="simple" value="{{value}}" placeholder="type some text..." input="{{input}}"></text-input>
+              <div class="vertical-section-container result">
+                <div><code>input</code>: <b>[[input]]</b></div>
+                <div><code>value</code>: <b>[[value]]</b></div>
+              </div>
+            </template>
+          </dom-bind>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <demo-snippet>
+        <h4>With regular expression (for hex-colors)</h4>
+        <template>
+          <dom-bind>
+            <template is="dom-bind">
+              <custom-style>
+                <style is="custom-style">
+                  #hex {
+                    --text-input-allign: center;
+                    --text-input: {
+                      color: #111;
+                      padding: 0.5em;
+                      border-radius: 0.5em;
+                      border-color: #ddd;
+                      border-style: dotted;
+                      transition: background-color 250ms ease-in-out;
+                    };
+                    --text-input-focus: {
+                      border-color: #555;
+                      border-style: solid;
+                      background: rgba(0, 0, 0, 0.15);
+                    };
+                    --text-input-placeholder: {
+                      color: #492020;
+                    };
+                    --text-input-invalid: {
+                      background: rgba(255, 0, 0, 0.15);
+                      border-color: #999;
+                      border-style: dashed;
+                    };
+                  }
+                </style>
+              </custom-style>
+              <text-input id="hex" value="{{value}}" input="{{input}}" default="#111" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" size="7" maxlength="7" minlength="4"></text-input>
+              <div class="vertical-section-container result">
+                <div><code>input</code>: <b>[[input]]</b></div>
+                <div><code>value</code>: <b>[[value]]</b></div>
+              </div>
+            </template>
+          </dom-bind>
+        </template>
+      </demo-snippet>
+    </div>
+
+  </body>
+</html>
