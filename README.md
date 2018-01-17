@@ -7,23 +7,14 @@ _[Demo](https://fooloomanzoo.github.io/text-input/components/text-input/#/elemen
 
 ## \<text-input\>
 
-An input for numeric values.
+An input for text values.
 
 ### Motivation
 
-The normal `input` with `type="number"` is fairly good to use, but it has some flaws, because it should if wanted e.g.:
+The normal `input` with `type="text"` is fairly good to use, but it has some flaws, because it should if wanted e.g.:
 
-* prevent non numeric input
 * guarantee **live**-data to be valid
-* pad a value with `0` (to a specific length)
-* size the input (according to it's length)
-* overflow to minimum or underflow to maximum
-* saturate to minimum or to maximum
-* display a specified unit and size the input
-
-This element wants to achieve that. It does use **decimal notation**, like `123.4`, but does not display _scientific (exponential) notation_, like `1.234e+2`.
-
-![alt text](https://github.com/fooloomanzoo/text-input/raw/master/docs/text-input.gif "Demo")
+* to be styled easily
 
 ### Example
 
@@ -35,25 +26,29 @@ This element wants to achieve that. It does use **decimal notation**, like `123.
 
     <custom-style>
       <style is="custom-style">
-        html {
-          font-family: 'Source Sans Pro', sans-serif;
-          line-height: 1.5;
+        #hex {
+          --text-input-allign: center;
           --text-input: {
-            background: rgba(60, 61, 172, 0.5);
-            transition: background 150ms ease-in-out;
-            color: white;
+            color: #111;
             padding: 0.5em;
-            border-radius: 4px;
-            border: none;
+            border-radius: 0.5em;
+            border-color: #ddd;
+            border-style: dotted;
+            transition: background-color 250ms ease-in-out;
           };
           --text-input-focus: {
-            background: rgba(60, 61, 172, 0.9);
-            outline: none;
+            border-color: #555;
+            border-style: solid;
+            background: rgba(0, 0, 0, 0.15);
           };
-        }
-        text-input {
-          font-size: 1.5em;
-          padding: 0.5em;
+          --text-input-placeholder: {
+            color: #492020;
+          };
+          --text-input-invalid: {
+            background: rgba(255, 0, 0, 0.15);
+            border-color: #999;
+            border-style: dashed;
+          };
         }
       </style>
     </custom-style>
@@ -65,7 +60,11 @@ This element wants to achieve that. It does use **decimal notation**, like `123.
 ```
 -->
 ```html
-<text-input min="-150" step="0.15" max="300" pad-length="5" default="0"></text-input>
+<text-input id="hex" value="{{value}}" input="{{input}}" default="#111" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" size="7" maxlength="7" minlength="4"></text-input>
+<div class="vertical-section-container result">
+  <div><code>input</code>: <b>[[input]]</b></div>
+  <div><code>value</code>: <b>[[value]]</b></div>
+</div>
 ```
 
 ### Installation
