@@ -64,11 +64,11 @@ The normal `input` with `type="text"` is fairly good to use, but it has some fla
 ```
 -->
 ```html
-<text-input id="hex" value="{{value}}" input="{{input}}" default="#111" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" size="7" maxlength="7" minlength="4"></text-input>
-<div class="vertical-section-container result">
-  <div><code>input</code>: <b>[[input]]</b></div>
-  <div><code>value</code>: <b>[[value]]</b></div>
-</div>
+  <p>
+    <text-input id="hex" value="{{value}}" input="{{input}}" default="#111" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" size="7" maxlength="7" minlength="4"></text-input>
+  </p>
+  <p>input: <b>[[input]]</b></p>
+  <p>value: <b>[[value]]</b></p>
 ```
 
 ### Installation
