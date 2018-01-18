@@ -42,7 +42,7 @@
               font-weight: inherit;
               text-align: var(--text-input-allign, var(--input-allign, left));
               overflow: visible;
-              border-color: transparent;
+              border-width: 0;
               box-sizing: content-box;
               color: var(--text-input-color, var(--input-color, inherit));
               background: var(--text-input-background, var(--input-background, inherit));
@@ -195,6 +195,14 @@
            */
           size: {
             type: Number
+          },
+
+          /**
+           * if true, the length of the value is not used for computing the size-attribute
+           * @type {number}
+           */
+          noAutoSize: {
+            type: Boolean
           }
         }
       }
@@ -229,7 +237,7 @@
 
       _inputChanged(input) {
         if (input === undefined) return;
-        
+
         if (!(this._validationRegExp && this._validationRegExp.exec(input) === null)) {
           this.value = input;
         }
@@ -239,6 +247,9 @@
         if (value === undefined) return;
 
         if (!(this._validationRegExp && this._validationRegExp.exec(value) === null)) {
+          if (!this.noAutoSize) {
+            this.size = value.length;
+          }
           this.input = value;
         } else if (oldValue !== undefined && this._validationRegExp.exec(oldValue) !== null) {
           this.value = oldValue;
