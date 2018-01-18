@@ -82,7 +82,7 @@
             minlength="[[minlength]]"
             maxlength="[[maxlength]]"
             size="[[size]]"
-            spellcheck="[[_computedSpellcheckAttribute]]"
+            spellcheck$="[[_computeSpellcheckAttribute(spellcheck)]]"
             on-focusin="_checkInput"
             on-focusout="_checkInput"
             on-blur="_checkInput"
@@ -213,11 +213,6 @@
           spellcheck: {
             type: Boolean,
             value: false
-          },
-
-          _computedSpellcheckAttribute: {
-            type: Boolean,
-            computed: '_computeSpellcheckAttribute(spellcheck)'
           }
         }
       }
@@ -295,7 +290,7 @@
       }
 
       _computeSpellcheckAttribute(spellcheck) {
-        return !spellcheck ? 'false' : true;
+        return !spellcheck ? 'false' : 'true';
       }
 
       /**

@@ -65,8 +65,9 @@ The normal `input` with `type="text"` is fairly good to use, but it has some fla
 -->
 ```html
   <p>
-    <text-input id="hex" value="{{value}}" input="{{input}}" default="#111" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" size="7" maxlength="7" minlength="4"></text-input>
+    hex-color: <text-input id="hex" value="{{value}}" input="{{input}}" default="#111" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" size="7" maxlength="7" minlength="4"></text-input>
   </p>
+  <p>pattern: <b>^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$</b></p>
   <p>input: <b>[[input]]</b></p>
   <p>value: <b>[[value]]</b></p>
 ```
