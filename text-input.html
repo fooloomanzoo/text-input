@@ -82,6 +82,7 @@
             minlength="[[minlength]]"
             maxlength="[[maxlength]]"
             size="[[size]]"
+            spellcheck="[[_computedSpellcheckAttribute]]"
             on-focusin="_checkInput"
             on-focusout="_checkInput"
             on-blur="_checkInput"
@@ -203,6 +204,20 @@
            */
           noAutoSize: {
             type: Boolean
+          },
+
+          /**
+           * if true, the input will check the spelling
+           * @type {number}
+           */
+          spellcheck: {
+            type: Boolean,
+            value: false
+          },
+
+          _computedSpellcheckAttribute: {
+            type: Boolean,
+            computed: '_computeSpellcheckAttribute(spellcheck)'
           }
         }
       }
@@ -274,6 +289,10 @@
           this.blur();
           return;
         }
+      }
+
+      _computeSpellcheckAttribute(spellcheck) {
+        return !spellcheck ? 'false' : true;
       }
 
       /**
