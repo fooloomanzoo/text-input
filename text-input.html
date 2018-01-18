@@ -263,7 +263,7 @@
 
         if (!(this._validationRegExp && this._validationRegExp.exec(value) === null)) {
           if (!this.noAutoSize) {
-            this.size = value.length || (placeholder && placeholder.length) || 1;
+            this.size = value.length || (this.placeholder && this.placeholder.length) || 1;
           }
           this.input = value;
         } else if (oldValue !== undefined && this._validationRegExp.exec(oldValue) !== null) {
