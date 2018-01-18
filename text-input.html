@@ -227,7 +227,7 @@
         this._ensureAttribute('tabindex', 0);
         this.addEventListener('focus', this.focus.bind(this), false);
         if (!this.noAutoSize) {
-          this.size = this.value.length || (this.placeholder && this.placeholder.length) || 1;
+          this.size = (this.value && this.value.length) || (this.placeholder && this.placeholder.length) || 1;
         }
       }
 
