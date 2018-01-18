@@ -236,7 +236,7 @@
         if (!(this._validationRegExp && this._validationRegExp.exec(this.$.input.value) === null)) {
           this.input = this.value = this.$.input.value;
         } else if (!(this._validationRegExp && this._validationRegExp.exec(this.value) === null)) {
-          this.input = this.value;
+          this.input = this.$.input.value = this.value;
         }
       }
 
