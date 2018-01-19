@@ -1,6 +1,6 @@
 {
   "name": "@fooloomanzoo/text-input",
-  "version": "1.0.12",
+  "version": "2.0.0",
   "description": "input for text",
   "main": "index.html",
   "directories": {
@@ -8,9 +8,9 @@
   },
   "scripts": {
     "postinstall": "bower install --save-dev",
-    "prepublish": "npm run build && git pull && git add . && git commit -m \"publish new version\" && git push && npm version patch",
+    "prepublish": "npm run build && git add . && git commit -m \"publish new version\" && git push && npm version patch",
     "gh-pages": "git checkout gh-pages && git pull && bower update -f && git add . && git commit -m \"update\" && git push && git checkout master",
-    "build": "polymer analyze > analysis.json",
+    "build": "git pull && polymer analyze > analysis.json",
     "prestart": "polymer analyze > analysis.json",
     "start": "polymer serve",
     "test": "echo \"Error: no test specified\" && exit 1"
