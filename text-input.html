@@ -1,16 +1,18 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../input-picker-pattern/form-element-mixin.html">
 
 <script>
   /**
    * mixin to create a text-input
    *
+   * @appliesMixin FormElementMixin
    *
    * @mixinFunction
    * @polymer
    */
   const TextInputMixin = (superClass) => { // eslint-disable-line no-unused-vars
 
-    return class extends superClass {
+    return class extends FormElementMixin(superClass) {
 
       static get template() {
         return `
@@ -84,9 +86,9 @@
             maxlength="[[maxlength]]"
             size="[[size]]"
             spellcheck$="[[_computeSpellcheckAttribute(spellcheck)]]"
-            on-focusin="_checkInput"
-            on-focusout="_checkInput"
-            on-blur="_checkInput"
+            on-focusin="validate"
+            on-focusout="validate"
+            on-blur="validate"
             on-keydown="_checkKeycode">
         `;
       }
@@ -109,30 +111,13 @@
             notify: true,
             value: 'text'
           },
+
           /**
            * placeholder string
            * @type {string}
            */
           placeholder: {
             type: String
-          },
-
-          /**
-           * disables the input
-           * @type {boolean}
-           */
-          disabled: {
-            type: Boolean,
-            reflectToAttribute: true
-          },
-
-          /**
-           * required attribute
-           * @type {boolean}
-           */
-          required: {
-            type: Boolean,
-            reflectToAttribute: true
           },
 
           /**
@@ -172,6 +157,7 @@
           value: {
             type: String,
             notify: true,
+            value: '',
             observer: '_valueChanged'
           },
 
@@ -232,12 +218,18 @@
         this.removeEventListener('focus', this.focus.bind(this), false);
       }
 
-      _checkInput() {
-        if (!(this._validationRegExp && this._validationRegExp.exec(this.$.input.value) === null)) {
-          this.input = this.value = this.$.input.value;
-        } else if (!(this._validationRegExp && this._validationRegExp.exec(this.value) === null)) {
-          this.input = this.$.input.value = this.value;
+      validate() {
+        if (this.disabled) {
+          return false;
         }
+        if (!(this._validationRegExp && this._validationRegExp.exec(this.$.input.value) === null) && !(this.required && !this.$.input.value)) {
+          this.input = this.value = this.$.input.value;
+          return true;
+        } else if (!(this._validationRegExp && this._validationRegExp.exec(this.value) === null) && !(this.required && !this.value)) {
+          this.input = this.$.input.value = this.value;
+          return true;
+        }
+        return false;
       }
 
       _patternChanged(pattern) {
@@ -246,7 +238,7 @@
           return;
         }
         this._validationRegExp = new RegExp(pattern);
-        this._checkInput();
+        this.validate();
       }
 
       _inputChanged(input) {
@@ -278,13 +270,13 @@
 
         // enter & space
         if (e.keyCode === 13 || e.keyCode === 32) {
-          this._checkInput();
+          this.validate();
           return;
         }
 
         // esc
         if (e.keyCode === 27) {
-          this._checkInput();
+          this.validate();
           this.blur();
           return;
         }
@@ -357,6 +349,7 @@
      * @appliesMixin TextInputMixin
      *
      * @demo demo/index.html
+     * @demo demo/iron-form.html
      **/
     class TextInput extends TextInputMixin(Polymer.Element) {
 
