@@ -253,7 +253,8 @@
         if (value === undefined) return;
 
         if (!(this._validationRegExp && this._validationRegExp.exec(value) === null)) {
-            this.size = value.length || (this.placeholder && this.placeholder.length) || 1;
+          if (!this.noAutoWidth) {
+            this.size = Math.ceil(1.2*(value.length || 1) - value.replace(/[A-GJ-Zmw_$§%#\s]/g, '').length * 0.2 - value.replace(/[^\s]/g, '').length * 0.667);
           }
           this.input = value;
         } else if (oldValue !== undefined && this._validationRegExp.exec(oldValue) !== null) {
