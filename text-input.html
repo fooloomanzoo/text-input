@@ -189,7 +189,7 @@
            * if true, the length of the value is not used for computing the size-attribute
            * @type {number}
            */
-          noAutoSize: {
+          noAutoWidth: {
             type: Boolean
           },
 
@@ -208,7 +208,7 @@
         super.connectedCallback();
         this._ensureAttribute('tabindex', 0);
         this.addEventListener('focus', this.focus.bind(this), false);
-        if (!this.noAutoSize) {
+        if (!this.noAutoWidth) {
           this.size = (this.value && this.value.length) || (this.placeholder && this.placeholder.length) || 1;
         }
       }
@@ -253,7 +253,6 @@
         if (value === undefined) return;
 
         if (!(this._validationRegExp && this._validationRegExp.exec(value) === null)) {
-          if (!this.noAutoSize) {
             this.size = value.length || (this.placeholder && this.placeholder.length) || 1;
           }
           this.input = value;

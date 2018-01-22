@@ -7,93 +7,6 @@
       "path": "text-input.html",
       "properties": [
         {
-          "name": "required",
-          "type": "boolean",
-          "description": "required attribute",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
-            "start": {
-              "line": 16,
-              "column": 10
-            },
-            "end": {
-              "line": 18,
-              "column": 11
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "disabled",
-          "type": "boolean",
-          "description": "disables the input",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
-            "start": {
-              "line": 23,
-              "column": 10
-            },
-            "end": {
-              "line": 25,
-              "column": 11
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "description": "name of the input",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
-            "start": {
-              "line": 30,
-              "column": 10
-            },
-            "end": {
-              "line": 32,
-              "column": 11
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "value",
-          "type": "string",
-          "description": "value string of the input",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 156,
-              "column": 10
-            },
-            "end": {
-              "line": 161,
-              "column": 11
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "notify": true,
-              "observer": "\"_valueChanged\""
-            }
-          },
-          "defaultValue": "\"\"",
-          "inheritedFrom": "TextInputMixin"
-        },
-        {
           "name": "autocomplete",
           "type": "string",
           "description": "autocomplete the input",
@@ -226,6 +139,30 @@
           "inheritedFrom": "TextInputMixin"
         },
         {
+          "name": "value",
+          "type": "string",
+          "description": "value string of the input",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 156,
+              "column": 10
+            },
+            "end": {
+              "line": 161,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_valueChanged\""
+            }
+          },
+          "defaultValue": "\"\"",
+          "inheritedFrom": "TextInputMixin"
+        },
+        {
           "name": "minlength",
           "type": "number",
           "description": "minlength of the input",
@@ -286,7 +223,7 @@
           "inheritedFrom": "TextInputMixin"
         },
         {
-          "name": "noAutoSize",
+          "name": "noAutoWidth",
           "type": "number",
           "description": "if true, the length of the value is not used for computing the size-attribute",
           "privacy": "public",
@@ -329,24 +266,6 @@
       ],
       "methods": [
         {
-          "name": "validate",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 220,
-              "column": 6
-            },
-            "end": {
-              "line": 232,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "TextInputMixin"
-        },
-        {
           "name": "connectedCallback",
           "description": "",
           "privacy": "public",
@@ -375,6 +294,24 @@
             },
             "end": {
               "line": 218,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "TextInputMixin"
+        },
+        {
+          "name": "validate",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 220,
+              "column": 6
+            },
+            "end": {
+              "line": 232,
               "column": 7
             }
           },
@@ -559,77 +496,6 @@
       "name": "TextInput",
       "attributes": [
         {
-          "name": "required",
-          "description": "required attribute",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
-            "start": {
-              "line": 16,
-              "column": 10
-            },
-            "end": {
-              "line": 18,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "boolean",
-          "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "disabled",
-          "description": "disables the input",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
-            "start": {
-              "line": 23,
-              "column": 10
-            },
-            "end": {
-              "line": 25,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "boolean",
-          "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "name",
-          "description": "name of the input",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
-            "start": {
-              "line": 30,
-              "column": 10
-            },
-            "end": {
-              "line": 32,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "string",
-          "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "value",
-          "description": "value string of the input",
-          "sourceRange": {
-            "start": {
-              "line": 156,
-              "column": 10
-            },
-            "end": {
-              "line": 161,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "string",
-          "inheritedFrom": "TextInputMixin"
-        },
-        {
           "name": "autocomplete",
           "description": "autocomplete the input",
           "sourceRange": {
@@ -732,6 +598,23 @@
           "inheritedFrom": "TextInputMixin"
         },
         {
+          "name": "value",
+          "description": "value string of the input",
+          "sourceRange": {
+            "start": {
+              "line": 156,
+              "column": 10
+            },
+            "end": {
+              "line": 161,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "TextInputMixin"
+        },
+        {
           "name": "minlength",
           "description": "minlength of the input",
           "sourceRange": {
@@ -783,7 +666,7 @@
           "inheritedFrom": "TextInputMixin"
         },
         {
-          "name": "no-auto-size",
+          "name": "no-auto-width",
           "description": "if true, the length of the value is not used for computing the size-attribute",
           "sourceRange": {
             "start": {
@@ -835,92 +718,6 @@
       "summary": "",
       "path": "text-input.html",
       "properties": [
-        {
-          "name": "required",
-          "type": "boolean",
-          "description": "required attribute",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
-            "start": {
-              "line": 16,
-              "column": 10
-            },
-            "end": {
-              "line": 18,
-              "column": 11
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "disabled",
-          "type": "boolean",
-          "description": "disables the input",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
-            "start": {
-              "line": 23,
-              "column": 10
-            },
-            "end": {
-              "line": 25,
-              "column": 11
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "description": "name of the input",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
-            "start": {
-              "line": 30,
-              "column": 10
-            },
-            "end": {
-              "line": 32,
-              "column": 11
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "value",
-          "type": "string",
-          "description": "value string of the input",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 156,
-              "column": 10
-            },
-            "end": {
-              "line": 161,
-              "column": 11
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "notify": true,
-              "observer": "\"_valueChanged\""
-            }
-          },
-          "defaultValue": "\"\""
-        },
         {
           "name": "autocomplete",
           "type": "string",
@@ -1048,6 +845,29 @@
           }
         },
         {
+          "name": "value",
+          "type": "string",
+          "description": "value string of the input",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 156,
+              "column": 10
+            },
+            "end": {
+              "line": 161,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_valueChanged\""
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
           "name": "minlength",
           "type": "number",
           "description": "minlength of the input",
@@ -1105,7 +925,7 @@
           }
         },
         {
-          "name": "noAutoSize",
+          "name": "noAutoWidth",
           "type": "number",
           "description": "if true, the length of the value is not used for computing the size-attribute",
           "privacy": "public",
@@ -1146,23 +966,6 @@
       ],
       "methods": [
         {
-          "name": "validate",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 220,
-              "column": 6
-            },
-            "end": {
-              "line": 232,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": []
-        },
-        {
           "name": "connectedCallback",
           "description": "",
           "privacy": "public",
@@ -1190,6 +993,23 @@
             },
             "end": {
               "line": 218,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "validate",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 220,
+              "column": 6
+            },
+            "end": {
+              "line": 232,
               "column": 7
             }
           },
@@ -1356,76 +1176,6 @@
       "name": "TextInputMixin",
       "attributes": [
         {
-          "name": "required",
-          "description": "required attribute",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
-            "start": {
-              "line": 16,
-              "column": 10
-            },
-            "end": {
-              "line": 18,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "boolean",
-          "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "disabled",
-          "description": "disables the input",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
-            "start": {
-              "line": 23,
-              "column": 10
-            },
-            "end": {
-              "line": 25,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "boolean",
-          "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "name",
-          "description": "name of the input",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
-            "start": {
-              "line": 30,
-              "column": 10
-            },
-            "end": {
-              "line": 32,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "string",
-          "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "value",
-          "description": "value string of the input",
-          "sourceRange": {
-            "start": {
-              "line": 156,
-              "column": 10
-            },
-            "end": {
-              "line": 161,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "string"
-        },
-        {
           "name": "autocomplete",
           "description": "autocomplete the input",
           "sourceRange": {
@@ -1522,6 +1272,22 @@
           "type": "string"
         },
         {
+          "name": "value",
+          "description": "value string of the input",
+          "sourceRange": {
+            "start": {
+              "line": 156,
+              "column": 10
+            },
+            "end": {
+              "line": 161,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
           "name": "minlength",
           "description": "minlength of the input",
           "sourceRange": {
@@ -1570,7 +1336,7 @@
           "type": "number"
         },
         {
-          "name": "no-auto-size",
+          "name": "no-auto-width",
           "description": "if true, the length of the value is not used for computing the size-attribute",
           "sourceRange": {
             "start": {
