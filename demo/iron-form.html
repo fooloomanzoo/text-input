@@ -66,7 +66,7 @@
             <form action="/foo" method="get">
               name: <text-input name="name" required value="Batman"></text-input><br>
               job: <text-input name="job" required value="Hero"></text-input><br>
-              destination: <text-input name="destination" required value="Gotham"></text-input><br>
+              destination: <text-input name="destination" required default="Gotham"></text-input><br>
               cape color: <text-input name="color" value="{{value}}" input="{{input}}" default="#111" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" size="7" maxlength="7" minlength="4"></text-input><br>
               <button onclick="form1.submit()">Submit</button>
               <button onclick="form1.validate()">Validate</button>
