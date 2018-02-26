@@ -12,7 +12,7 @@
    */
   const TextInputMixin = (superClass) => { // eslint-disable-line no-unused-vars
 
-    return class extends FormElementMixin(superClass) {
+    return class extends FormElementMixin(superClass) { // eslint-disable-line no-undef
 
       static get template() {
         return `
@@ -27,14 +27,9 @@
             :host {
               display: inline-flex;
               box-sizing: content-box;
-              --text-input: {
-                @apply --input-style;
-              };
-              --text-input-focus: {
-                @apply --input-focus;
-              };
               padding: 0 !important;
             }
+            :host(:focus),
             #input:focus {
               outline: none;
             }
@@ -42,31 +37,66 @@
               font-family: inherit;
               font-size: inherit;
               font-weight: inherit;
-              text-align: var(--text-input-allign, var(--input-allign, left));
+              text-align: var(--text-input-allign, center);
               overflow: visible;
-              border-color: transparent;
-              border-width: 0;
               box-sizing: content-box;
+              border: none;
+              outline: none;
+              -webkit-background-clip: padding-box;
+              background-clip: padding-box;
+              border-color: transparent;
+              line-height: 1;
               color: var(--text-input-color, var(--input-color, inherit));
               background: var(--text-input-background, var(--input-background, inherit));
+              @apply --input-style;
               @apply --text-input;
             }
+            #input::-webkit-input-placeholder,
             #input::placeholder {
+              @apply --input-placeholder;
               @apply --text-input-placeholder;
             }
             #input:hover,
             #input:focus {
               color: var(--text-input-focus-color, var(--input-focus-color, var(--text-input-color, inherit)));
               background: var(--text-input-focus-background, var(--input-focus-background, var(--text-input-background, inherit)));
+              @apply --input-focus;
               @apply --text-input-focus;
             }
+            input::-moz-focus-inner {
+              border-style: none;
+              padding: 0;
+            }
+            input::-moz-focusring {
+              border-width: 0;
+              color: transparent;
+              text-shadow: 0 0 0 var(--text-input-focus-color, var(--input-focus-color, #000));
+            }
+            :host([invalid]) #input,
             #input:not(:valid),
             #input:invalid {
+              @apply --input-invalid;
               @apply --text-input-invalid;
             }
             :host([disabled]) {
               color: var(--text-input-disabled-color, var(--input-disabled-color, inherit));
               @apply --input-disabled;
+            }
+            input::-moz-selection {
+              color: var(--text-input-color, var(--input-color, inherit));
+              background: var(--text-input-background, var(--input-background, transparent));
+            }
+            input:focus::-moz-selection {
+              color: var(--input-selection-color, inherit);
+              background: var(--input-selection-background, rgba(255,255,255,0.1));
+            }
+            input::selection {
+              color: var(--text-input-color, var(--input-color, inherit));
+              background: var(--text-input-background, var(--input-background, transparent));
+            }
+            input:focus::selection {
+              color: var(--input-selection-color, inherit);
+              background: var(--input-selection-background, rgba(255,255,255,0.1));
             }
           </style>
         `;
@@ -254,7 +284,8 @@
 
         if (!(this._validationRegExp && this._validationRegExp.exec(value) === null)) {
           if (!this.noAutoWidth) {
-            this.size = Math.ceil(1.2*(value.length || 1) - value.replace(/[A-GJ-Zmw_$§%#\s]/g, '').length * 0.2 - value.replace(/[^\s]/g, '').length * 0.667);
+            // approximation of width: numbers -> 0.75, whitespaces -> 0.33, else -> 1
+            this.size = Math.ceil((value.length || 1) - value.replace(/[\D]/g, '').length * 0.25 - value.replace(/[\S]/g, '').length * 0.667);
           }
           this.input = value;
         } else if (oldValue !== undefined && this._validationRegExp.exec(oldValue) !== null) {
@@ -351,7 +382,7 @@
      * @demo demo/index.html
      * @demo demo/iron-form.html
      **/
-    class TextInput extends TextInputMixin(Polymer.Element) {
+    class TextInput extends TextInputMixin(Polymer.Element) { // eslint-disable-line no-undef
 
       static get is() {
         return 'text-input';
