@@ -88,7 +88,7 @@
             }
             input:focus::-moz-selection {
               color: var(--input-selection-color, inherit);
-              background: var(--input-selection-background, rgba(255,255,255,0.1));
+              background: var(--input-selection-background, rgba(255,255,255,0.5));
             }
             input::selection {
               color: var(--text-input-color, var(--input-color, inherit));
@@ -96,7 +96,7 @@
             }
             input:focus::selection {
               color: var(--input-selection-color, inherit);
-              background: var(--input-selection-background, rgba(255,255,255,0.1));
+              background: var(--input-selection-background, rgba(255,255,255,0.5));
             }
           </style>
         `;
@@ -239,7 +239,7 @@
         this._ensureAttribute('tabindex', 0);
         this.addEventListener('focus', this.focus.bind(this), false);
         if (!this.noAutoWidth) {
-          this.size = (this.value && this.value.length) || (this.placeholder && this.placeholder.length) || 1;
+          this._computeWidth(this.value || this.placeholder || '0');
         }
       }
 
@@ -284,13 +284,15 @@
 
         if (!(this._validationRegExp && this._validationRegExp.exec(value) === null)) {
           if (!this.noAutoWidth) {
-            // approximation of width: numbers -> 0.75, whitespaces -> 0.33, else -> 1
-            this.size = Math.ceil((value.length || 1) - value.replace(/[\D]/g, '').length * 0.25 - value.replace(/[\S]/g, '').length * 0.667);
+            this._computeWidth(value);
           }
           this.input = value;
         } else if (oldValue !== undefined && this._validationRegExp.exec(oldValue) !== null) {
           this.value = oldValue;
         }
+      }
+      _computeWidth(str) {
+        this.size = str.length || 1;
       }
 
       _checkKeycode(e) {
@@ -339,7 +341,7 @@
     /**
      *  `text-input` is an element that can:
      * * guarantee **live**-data to be valid
-     * * be styled easily
+     * * be styled easily and in unified way
      *
      * Example:
      * ```html
@@ -351,16 +353,19 @@
      * ### Styling
      * Custom property                   | Description                                  | Default
      * ----------------------------------|----------------------------------------------|--------------------
-     * `--text-input`                    | style of the input                           | {}
-     * `--text-input-invalid`            | style of the input                           | {}
-     * `--text-input-focus`              | style of the focussed and hovered input      | {}
-     * `--text-input-placeholder`        | style of the placeholder                     | {}
-     * `--text-input-color`              | color of the input                           | inherit
-     * `--text-input-background`         | background of the input                      | inherit
-     * `--text-input-focus-color`        | color of the focussed and hovered input      | inherit
-     * `--text-input-focus-background`   | background of the focussed and hovered input | inherit
-     * `--text-input-disabled-color`     | color of the disabled input                  | inherit
-     * `--text-input-allign`             | allignment of the text of the input          | left
+     * `--text-input` | mixin applied to of the input | {}
+     * `--text-input-invalid` | mixin applied to an invalid input | {}
+     * `--text-input-focus` | mixin applied to the focussed and hovered input | {}
+     * `--text-input-placeholder` | mixin applied to the placeholder           | {}
+     * `--text-input-color` | color of the input | var(--input-color, inherit)
+     * `--text-input-background` | background of the input | var(--input-background, inherit)
+     * `--text-input-focus-color` | color of the focussed and hovered input | var(--input-focus-color, inherit)
+     * `--text-input-focus-background` | background of the focussed and hovered input | var(--input-background-color, inherit)
+     * `--text-input-disabled-color` | color of the disabled input | var(--input-disabled-color, inherit)
+     * `--text-input-allign` | allignment of the text of the input | center
+     * `--input-disabled` | mixin applied to the disabled input | {}
+     * `--input-selection-color` | color of selected text in the input only when focused | rgba(255,255,255,0.5)
+     * `--input-selection-background` | background of selected text in the input only when focused | transparent
      *
      * ```css
      * :host {
@@ -380,7 +385,7 @@
      * @appliesMixin TextInputMixin
      *
      * @demo demo/index.html
-     * @demo demo/iron-form.html
+     * @demo demo/iron-form.html in a form
      **/
     class TextInput extends TextInputMixin(Polymer.Element) { // eslint-disable-line no-undef
 
