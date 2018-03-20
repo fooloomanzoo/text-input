@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../input-picker-pattern/form-element-mixin.html">
+<link rel="import" href="../input-picker-pattern/input-shared-style.html">
 
 <script>
   /**
@@ -16,93 +17,55 @@
 
       static get template() {
         return `
-          ${this.styleTemplate}
-          ${this.contentTemplate}
+          <style include="${this.styleToInclude}">
+            ${this.styleTemplate}
+          </style>
+          ${this.inputTemplate}
         `;
+      }
+
+      static get styleToInclude() {
+        return 'input-shared-style';
       }
 
       static get styleTemplate() {
         return `
-          <style>
-            :host {
-              display: inline-flex;
-              box-sizing: content-box;
-              padding: 0 !important;
-            }
-            :host(:focus),
-            #input:focus {
-              outline: none;
-            }
-            #input {
-              font-family: inherit;
-              font-size: inherit;
-              font-weight: inherit;
-              text-align: var(--text-input-allign, center);
-              overflow: visible;
-              box-sizing: content-box;
-              border: none;
-              outline: none;
-              -webkit-background-clip: padding-box;
-              background-clip: padding-box;
-              border-color: transparent;
-              line-height: 1;
-              color: var(--text-input-color, var(--input-color, inherit));
-              background: var(--text-input-background, var(--input-background, inherit));
-              @apply --input-style;
-              @apply --text-input;
-            }
-            #input::-webkit-input-placeholder,
-            #input::placeholder {
-              @apply --input-placeholder;
-              @apply --text-input-placeholder;
-            }
-            #input:hover,
-            #input:focus {
-              color: var(--text-input-focus-color, var(--input-focus-color, var(--text-input-color, inherit)));
-              background: var(--text-input-focus-background, var(--input-focus-background, var(--text-input-background, inherit)));
-              @apply --input-focus;
-              @apply --text-input-focus;
-            }
-            input::-moz-focus-inner {
-              border-style: none;
-              padding: 0;
-            }
-            input::-moz-focusring {
-              border-width: 0;
-              color: transparent;
-              text-shadow: 0 0 0 var(--text-input-focus-color, var(--input-focus-color, #000));
-            }
-            :host([invalid]) #input,
-            #input:not(:valid),
-            #input:invalid {
-              @apply --input-invalid;
-              @apply --text-input-invalid;
-            }
-            :host([disabled]) {
-              color: var(--text-input-disabled-color, var(--input-disabled-color, inherit));
-              @apply --input-disabled;
-            }
-            input::-moz-selection {
-              color: var(--text-input-color, var(--input-color, inherit));
-              background: var(--text-input-background, var(--input-background, transparent));
-            }
-            input:focus::-moz-selection {
-              color: var(--input-selection-color, inherit);
-              background: var(--input-selection-background, rgba(255,255,255,0.5));
-            }
-            input::selection {
-              color: var(--text-input-color, var(--input-color, inherit));
-              background: var(--text-input-background, var(--input-background, transparent));
-            }
-            input:focus::selection {
-              color: var(--input-selection-color, inherit);
-              background: var(--input-selection-background, rgba(255,255,255,0.5));
-            }
-          </style>
+          ${super.styleTemplate || ''}
+          :host {
+            display: inline-flex;
+            justify-content: center;
+            box-sizing: content-box;
+          }
+          #size {
+            display: block;
+            overflow: visible;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            font-style: inherit;
+            color: inherit;
+            background: transparent;
+            outline: none;
+            line-height: normal;
+            box-sizing: content-box;
+            text-align: var(--input-allign, center);
+            padding: var(--input-padding, 0.25em);
+            border-radius: var(--input-border-radius, 0.25em);
+            border-width: var(--input-border-width, thin);
+            border-style: var(--input-border-style, dotted);
+            border-color: var(--input-border-color, transparent);
+            @apply --input-style;
+            margin: 0;
+            position: fixed;
+            top: 0; left: 0; right: auto; bottom: auto;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+          }
         `;
       }
 
-      static get contentTemplate() {
+      static get inputTemplate() {
         return `
           <input id="input"
             type="[[type]]"
@@ -126,38 +89,11 @@
       static get properties() {
         return {
           /**
-           * autocomplete the input
-           * @type {string}
-           */
-          autocomplete: {
-            type: Boolean
-          },
-          /**
-           * specify the type like 'password'
-           * @type {string}
-           */
-          type: {
-            type: String,
-            notify: true,
-            value: 'text'
-          },
-
-          /**
            * placeholder string
            * @type {string}
            */
           placeholder: {
             type: String
-          },
-
-          /**
-           * regular expression pattern of the input
-           * @type {string}
-           */
-          pattern: {
-            type: String,
-            notify: true,
-            observer: '_patternChanged'
           },
 
           /**
@@ -175,6 +111,16 @@
            * @type {string}
            */
           input: {
+            type: String,
+            notify: true,
+            observer: '_inputChanged'
+          },
+
+          /**
+           * live value of the input
+           * @type {string}
+           */
+          _input: {
             type: String,
             notify: true,
             observer: '_inputChanged'
@@ -200,22 +146,6 @@
           },
 
           /**
-           * maxlength of the input
-           * @type {number}
-           */
-          maxlength: {
-            type: Number
-          },
-
-          /**
-           * size of the input
-           * @type {number}
-           */
-          size: {
-            type: Number
-          },
-
-          /**
            * if true, the length of the value is not used for computing the size-attribute
            * @type {number}
            */
@@ -224,12 +154,11 @@
           },
 
           /**
-           * if true, the input will check the spelling
+           * if true, the length of the value is not used for computing the size-attribute
            * @type {number}
            */
-          spellcheck: {
-            type: Boolean,
-            value: false
+          autoResize: {
+            type: Boolean
           }
         }
       }
@@ -392,6 +321,94 @@
       static get is() {
         return 'text-input';
       }
+
+      static get properties() {
+        return {
+          /**
+           * autocomplete the input
+           * @type {string}
+           */
+          autocomplete: {
+            type: Boolean
+          },
+          
+          /**
+           * specify the type like 'password'
+           * @type {string}
+           */
+          type: {
+            type: String,
+            notify: true,
+            value: 'text'
+          },
+
+          /**
+           * regular expression pattern of the input
+           * @type {string}
+           */
+          pattern: {
+            type: String,
+            notify: true,
+            observer: '_patternChanged'
+          },
+
+          /**
+           * maxlength of the input
+           * @type {number}
+           */
+          maxlength: {
+            type: Number
+          },
+
+          /**
+           * size of the input
+           * @type {number}
+           */
+          size: {
+            type: Number
+          },
+
+          /**
+           * if true, the input will check the spelling
+           * @type {number}
+           */
+          spellcheck: {
+            type: Boolean,
+            value: false
+          }
+        }
+      }
+
+      static get styleTemplate() {
+        return `
+          ${super.styleTemplate || ''}
+          #size {
+            @apply --text-input;
+            margin: 0;
+          }
+          #input {
+            @apply --text-input;
+            width: 0;
+          }
+          :host(:focus) #input,
+          :host(:hover) #input,
+          #input:hover,
+          #input:focus {
+            @apply --text-input-focus;
+          }
+          :host([invalid]) #input {
+            @apply --text-input-invalid;
+          }
+          :host([disabled]) #input {
+            @apply --text-input-disabled;
+          }
+          #input::-webkit-input-placeholder,
+          #input::placeholder {
+            @apply --text-input-placeholder;
+          }
+        `;
+      }
+
     }
     window.customElements.define(TextInput.is, TextInput);
   </script>
