@@ -17,13 +17,11 @@
       static get styleTemplate() {
         return `
           ${super.styleTemplate || ''}
-          #size {
-            @apply --text-input;
-            margin: 0;
-          }
+          #size,
           #input {
             @apply --text-input;
-            width: 0;
+            margin: 0;
+            min-width: 1ch;
           }
           :host(:focus) #input,
           :host(:hover) #input,
@@ -195,12 +193,13 @@
      * `--input-disabled-opacity`        | opacity of the disabled input                  | 1
      * `--input-placeholder-color`       | color of the placeholder                       | inherit
      * `--input-placeholder-opacity`     | opacity of the placeholder                     | 0.75
+     * `--input-placeholder-align`       | text-allign of the placeholder                 | center
      * `--input-selection-color`         | color of the selected text                     | inherit
      * `--input-selection-background`    | background of the selected text                | rgba(255, 255, 255, 0.5)
      * `--input-style`                   | style of the input                             | {}
      * `--input-focus`                   | style of the focussed and hovered input        | {}
      * `--input-invalid`                 | style of the invalid input                     | {}
-     * `--input-placeholder`             | style of the placeholder
+     * `--input-placeholder`             | style of the placeholder                       | {}
      *
      * ```css
      * :host {
