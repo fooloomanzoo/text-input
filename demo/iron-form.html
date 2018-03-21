@@ -20,24 +20,22 @@
         text-input {
           margin-bottom: 8px;
           margin-left: 8px;
-          --text-input: {
-            color: #111;
-            padding: 0.25em;
-            border-radius: 2px;
-            border-color: #ddd;
-            border-width: thin;
-            border-style: dotted;
-            transition: background-color 150ms ease-in-out;
-          };
-          --text-input-focus: {
-            border-color: #555;
-            border-style: solid;
-            background: rgba(0, 0, 0, 0.15);
-          };
-          --text-input-invalid: {
-            background: rgba(255, 0, 0, 0.15);
-            border-color: #999;
-            border-style: dashed;
+          --input-color: #111;
+          --input-padding: 0.25em;
+          --input-border-radius: 5px;
+          --input-border-color: #ddd;
+          --input-border-width: thin;
+          --input-border-style: dotted;
+          --input-transition: background-color 150ms ease-in-out;
+          --input-focus-border-color: #555;
+          --input-focus-border-style: solid;
+          --input-focus-background: rgba(0, 0, 0, 0.15);
+          --input-invalid-background: rgba(255, 0, 0, 0.15);
+          --input-invalid-border-color: #999;
+          --input-invalid-border-style: dashed;
+          --input-placeholder: {
+            font-style: italic;
+            font-size: 0.75em;
           };
         }
         iron-form {
@@ -64,10 +62,11 @@
 
           <iron-form id="form1">
             <form action="/foo" method="get">
-              name: <text-input name="name" required value="Batman"></text-input><br>
-              job: <text-input name="job" required value="Hero"></text-input><br>
-              destination: <text-input name="destination" required default="Gotham"></text-input><br>
-              cape color: <text-input name="color" value="{{value}}" input="{{input}}" default="#111" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" size="7" maxlength="7" minlength="4"></text-input><br>
+              name: <text-input name="name" required value="Batman" placeholder="name"></text-input><br>
+              job: <text-input name="job" required value="Hero" placeholder="job"></text-input><br>
+              destination: <text-input name="destination" required placeholder="destination"></text-input><br>
+              cape color: <text-input name="color" default="#111" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" minlength="4" placeholder="cape color"></text-input><br>
+              email: <text-input name="email" required type="email" placeholder="your.name@gotham.org"></text-input><br>
               <button onclick="form1.submit()">Submit</button>
               <button onclick="form1.validate()">Validate</button>
             </form>
