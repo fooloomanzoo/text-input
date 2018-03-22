@@ -47,11 +47,13 @@
         return `
           <input id="input"
             type="[[type]]"
-            value="{{_input::input}}"
+            value="{{input::input}}"
             placeholder="[[placeholder]]"
             pattern="[[pattern]]"
             disabled="[[disabled]]"
             required="[[required]]"
+            minlength$="[[minlength]]"
+            maxlength$="[[maxlength]]"
             autocomplete$="[[_computeAutocompleteAttribute(autocomplete)]]"
             spellcheck$="[[_computeSpellcheckAttribute(spellcheck)]]">
         `;
@@ -84,13 +86,20 @@
           spellcheck: {
             type: Boolean,
             value: false
+          },
+
+          /**
+           * the maxlength of the input
+           */
+          maxlength: {
+            type: Number
           }
         }
       }
 
       static get observers() {
         return [
-          '_computeInvalid(required, _input)'
+          '_computeInvalid(required, input)'
         ]
       }
 
@@ -116,7 +125,7 @@
           return;
         }
         this._validationRegExp = new RegExp(pattern);
-        this.validate();
+        this._checkInput();
       }
 
       _inputChanged(input) {
@@ -125,17 +134,18 @@
         if (!(this._validationRegExp && this._validationRegExp.exec(input) === null)) {
           this.value = input;
         }
+        if (this.autoResize) {
+          this._debouncedComputeWidth();
+        }
       }
 
       _valueChanged(value, oldValue) {
         if (value === undefined) return;
 
         if (!(this._validationRegExp && this._validationRegExp.exec(value) === null)) {
-          this._input = value;
-          this._debouncedComputeWidth();
+          this.input = value;
         } else if (oldValue !== undefined && this._validationRegExp.exec(oldValue) !== null) {
           this.value = oldValue;
-          this._debouncedComputeWidth();
         }
       }
 
@@ -190,8 +200,8 @@
      * `--input-invalid-border-color`    | border color of the invalid input              | rgba(255, 0, 0, 0.5)
      * `--input-disabled-color`          | color of the disabled input                    | inherit
      * `--input-disabled-background`     | background of the disabled input               | transparent
-     * `--input-disabled-font-style`     | font-style of the disabled input               | italic
-     * `--input-disabled-opacity`        | opacity of the disabled input                  | 1
+     * `--input-disabled-font-style`     | font-style of the disabled input               | oblique
+     * `--input-disabled-opacity`        | opacity of the disabled input                  | 0.9
      * `--input-placeholder-color`       | color of the placeholder                       | inherit
      * `--input-placeholder-opacity`     | opacity of the placeholder                     | 0.75
      * `--input-placeholder-align`       | text-allign of the placeholder                 | center
