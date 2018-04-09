@@ -72,6 +72,9 @@ The normal `input` with `type="text"` is fairly good to use, but it has some fla
   <p>value: <b>[[value]]</b></p>
 ```
 
+### Styling
+Have a look at [input-picker-pattern#input-shared-style](https://github.com/fooloomanzoo/input-picker-pattern#input-shared-style) to see how to style the element.
+
 ### Installation
 ```
 bower install --save fooloomanzoo/text-input
