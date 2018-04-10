@@ -142,14 +142,20 @@
       }
 
       _inputChanged(input) {
-        if (input === undefined) return;
+        if (input === undefined) {
+          this._debouncedComputeWidth();
+          return;
+        };
         if (!(this._validationRegExp && this._validationRegExp.exec(input) === null)) {
           this.value = input;
         }
       }
 
       _valueChanged(value, oldValue) {
-        if (value === undefined) return;
+        if (value === undefined) {
+          this._debouncedComputeWidth();
+          return;
+        };
 
         if (!(this._validationRegExp && this._validationRegExp.exec(value) === null)) {
           this.input = value;
