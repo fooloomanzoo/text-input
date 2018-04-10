@@ -53,6 +53,7 @@
             disabled$="[[disabled]]"
             required$="[[required]]"
             maxlength$="[[maxlength]]"
+            title$="[[title]]"
             autocomplete$="[[_computeAutocompleteAttribute(autocomplete)]]"
             spellcheck$="[[_computeSpellcheckAttribute(spellcheck)]]">
         `;
@@ -98,8 +99,15 @@
             type: String,
             readOnly: true,
             value: 'input'
-          }
+          },
 
+          /**
+           * the (valid) value of the input
+           */
+          value: {
+            notify: true,
+            observer: '_valueChanged'
+          }
         }
       }
 
@@ -110,10 +118,10 @@
       }
 
       _computeInvalid(req, v) {
-        this.invalid = !this._validate(v, req);
+        this.invalid = !this._validate(req, v || '');
       }
 
-      _validate(v, req) {
+      _validate(req, v) {
         if (this._validationRegExp) {
           if ((this._validationRegExp.exec(v) !== null) && !(req && !v)) {
             return true;
@@ -130,7 +138,7 @@
           return;
         }
         this._validationRegExp = new RegExp(pattern);
-        this.validate();
+        this._computeInvalid(this.required, this.value || '');
       }
 
       _inputChanged(input) {
