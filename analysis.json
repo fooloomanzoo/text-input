@@ -98,27 +98,26 @@
         },
         {
           "name": "value",
-          "type": "string",
-          "description": "the value of the input",
+          "type": "Object",
+          "description": "value of the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 111,
+              "line": 50,
               "column": 10
             },
             "end": {
-              "line": 115,
+              "line": 53,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "observer": "\"_valueChanged\""
+              "notify": true
             }
           },
-          "inheritedFrom": "InputPattern"
+          "inheritedFrom": "FormElementMixin"
         },
         {
           "name": "_valueIsSet",
@@ -145,25 +144,25 @@
         {
           "name": "propertyForValue",
           "type": "string",
-          "description": "defines the property that should be used for the value",
+          "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 66,
+              "line": 96,
               "column": 10
             },
             "end": {
-              "line": 69,
+              "line": 100,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "\"_createReflectPropertyToValueObserver\""
+              "readOnly": true
             }
           },
-          "inheritedFrom": "FormElementMixin"
+          "defaultValue": "\"input\"",
+          "inheritedFrom": "TextInputMixin"
         },
         {
           "name": "type",
@@ -173,11 +172,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 94,
+              "line": 81,
               "column": 10
             },
             "end": {
-              "line": 97,
+              "line": 84,
               "column": 11
             }
           },
@@ -195,11 +194,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 102,
+              "line": 89,
               "column": 10
             },
             "end": {
-              "line": 106,
+              "line": 93,
               "column": 11
             }
           },
@@ -219,11 +218,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 120,
+              "line": 98,
               "column": 10
             },
             "end": {
-              "line": 122,
+              "line": 100,
               "column": 11
             }
           },
@@ -240,11 +239,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 127,
+              "line": 105,
               "column": 10
             },
             "end": {
-              "line": 129,
+              "line": 107,
               "column": 11
             }
           },
@@ -261,32 +260,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 134,
+              "line": 112,
               "column": 10
             },
             "end": {
-              "line": 136,
-              "column": 11
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "InputPattern"
-        },
-        {
-          "name": "maxlength",
-          "type": "number",
-          "description": "the maxlength of the input",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-pattern.html",
-            "start": {
-              "line": 141,
-              "column": 10
-            },
-            "end": {
-              "line": 143,
+              "line": 114,
               "column": 11
             }
           },
@@ -303,11 +281,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 148,
+              "line": 119,
               "column": 10
             },
             "end": {
-              "line": 150,
+              "line": 121,
               "column": 11
             }
           },
@@ -324,11 +302,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 155,
+              "line": 126,
               "column": 10
             },
             "end": {
-              "line": 157,
+              "line": 128,
               "column": 11
             }
           },
@@ -345,11 +323,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 162,
+              "line": 133,
               "column": 10
             },
             "end": {
-              "line": 164,
+              "line": 135,
               "column": 11
             }
           },
@@ -366,11 +344,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 169,
+              "line": 140,
               "column": 10
             },
             "end": {
-              "line": 171,
+              "line": 142,
               "column": 11
             }
           },
@@ -386,11 +364,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 67,
               "column": 10
             },
             "end": {
-              "line": 70,
+              "line": 71,
               "column": 11
             }
           },
@@ -409,11 +387,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 76,
               "column": 10
             },
             "end": {
-              "line": 78,
+              "line": 79,
               "column": 11
             }
           },
@@ -430,11 +408,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 84,
               "column": 10
             },
             "end": {
-              "line": 86,
+              "line": 87,
               "column": 11
             }
           },
@@ -442,6 +420,26 @@
             "polymer": {}
           },
           "defaultValue": "false",
+          "inheritedFrom": "TextInputMixin"
+        },
+        {
+          "name": "maxlength",
+          "type": "number",
+          "description": "maximum length of the input",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 92,
+              "column": 10
+            },
+            "end": {
+              "line": 94,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
           "inheritedFrom": "TextInputMixin"
         }
       ],
@@ -453,11 +451,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 183,
+              "line": 162,
               "column": 6
             },
             "end": {
-              "line": 194,
+              "line": 170,
               "column": 7
             }
           },
@@ -471,16 +469,23 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 96,
+              "line": 111,
               "column": 6
             },
             "end": {
-              "line": 98,
+              "line": 113,
               "column": 7
             }
           },
           "metadata": {},
-          "params": [],
+          "params": [
+            {
+              "name": "req"
+            },
+            {
+              "name": "v"
+            }
+          ],
           "inheritedFrom": "TextInputMixin"
         },
         {
@@ -508,21 +513,22 @@
         },
         {
           "name": "validate",
-          "description": "",
+          "description": "validates the input for iron-form",
           "privacy": "public",
           "sourceRange": {
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 100,
+              "line": 96,
               "column": 6
             },
             "end": {
-              "line": 110,
+              "line": 98,
               "column": 7
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "TextInputMixin"
+          "inheritedFrom": "FormElementMixin"
         },
         {
           "name": "_attachDom",
@@ -558,7 +564,7 @@
               "column": 6
             },
             "end": {
-              "line": 119,
+              "line": 126,
               "column": 7
             }
           },
@@ -575,23 +581,22 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 121,
+              "line": 173,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 177,
               "column": 7
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "v"
+              "name": "input"
             }
           ],
-          "inheritedFrom": "FormElementMixin"
+          "inheritedFrom": "TextInputMixin"
         },
         {
           "name": "_reflectValueToProperty",
@@ -600,11 +605,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 125,
+              "line": 132,
               "column": 6
             },
             "end": {
-              "line": 127,
+              "line": 134,
               "column": 7
             }
           },
@@ -623,11 +628,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 196,
+              "line": 172,
               "column": 6
             },
             "end": {
-              "line": 199,
+              "line": 175,
               "column": 7
             }
           },
@@ -642,11 +647,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 201,
+              "line": 177,
               "column": 6
             },
             "end": {
-              "line": 206,
+              "line": 182,
               "column": 7
             }
           },
@@ -661,11 +666,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 208,
+              "line": 184,
               "column": 6
             },
             "end": {
-              "line": 213,
+              "line": 189,
               "column": 7
             }
           },
@@ -680,11 +685,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 218,
+              "line": 194,
               "column": 6
             },
             "end": {
-              "line": 221,
+              "line": 197,
               "column": 7
             }
           },
@@ -699,11 +704,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 226,
+              "line": 202,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 205,
               "column": 7
             }
           },
@@ -722,11 +727,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 231,
+              "line": 207,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 226,
               "column": 7
             }
           },
@@ -744,11 +749,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 135,
               "column": 6
             },
             "end": {
-              "line": 127,
+              "line": 140,
               "column": 7
             }
           },
@@ -761,42 +766,17 @@
           "inheritedFrom": "TextInputMixin"
         },
         {
-          "name": "_valueChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 129,
-              "column": 6
-            },
-            "end": {
-              "line": 139,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "value"
-            },
-            {
-              "name": "oldValue"
-            }
-          ],
-          "inheritedFrom": "TextInputMixin"
-        },
-        {
           "name": "_defaultChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 269,
+              "line": 238,
               "column": 6
             },
             "end": {
-              "line": 273,
+              "line": 242,
               "column": 7
             }
           },
@@ -813,13 +793,12 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 275,
+              "line": 162,
               "column": 6
             },
             "end": {
-              "line": 279,
+              "line": 171,
               "column": 7
             }
           },
@@ -829,7 +808,7 @@
               "name": "e"
             }
           ],
-          "inheritedFrom": "InputPattern"
+          "inheritedFrom": "TextInputMixin"
         },
         {
           "name": "_updateValue",
@@ -838,11 +817,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 281,
+              "line": 250,
               "column": 6
             },
             "end": {
-              "line": 285,
+              "line": 254,
               "column": 7
             }
           },
@@ -861,11 +840,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 287,
+              "line": 256,
               "column": 6
             },
             "end": {
-              "line": 306,
+              "line": 275,
               "column": 7
             }
           },
@@ -880,11 +859,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 311,
+              "line": 280,
               "column": 6
             },
             "end": {
-              "line": 327,
+              "line": 300,
               "column": 7
             }
           },
@@ -899,11 +878,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 329,
+              "line": 302,
               "column": 6
             },
             "end": {
-              "line": 334,
+              "line": 307,
               "column": 7
             }
           },
@@ -918,11 +897,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 336,
+              "line": 309,
               "column": 6
             },
             "end": {
-              "line": 338,
+              "line": 311,
               "column": 7
             }
           },
@@ -931,16 +910,41 @@
           "inheritedFrom": "InputPattern"
         },
         {
+          "name": "_validate",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 115,
+              "column": 6
+            },
+            "end": {
+              "line": 124,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "v"
+            },
+            {
+              "name": "req"
+            }
+          ],
+          "inheritedFrom": "TextInputMixin"
+        },
+        {
           "name": "_patternChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 126,
               "column": 6
             },
             "end": {
-              "line": 119,
+              "line": 133,
               "column": 7
             }
           },
@@ -953,16 +957,41 @@
           "inheritedFrom": "TextInputMixin"
         },
         {
+          "name": "_valueChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 142,
+              "column": 6
+            },
+            "end": {
+              "line": 152,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "inheritedFrom": "TextInputMixin"
+        },
+        {
           "name": "_computeSpellcheckAttribute",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 154,
               "column": 6
             },
             "end": {
-              "line": 143,
+              "line": 156,
               "column": 7
             }
           },
@@ -980,11 +1009,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 145,
+              "line": 158,
               "column": 6
             },
             "end": {
-              "line": 147,
+              "line": 160,
               "column": 7
             }
           },
@@ -1011,11 +1040,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 189,
+          "line": 219,
           "column": 4
         },
         "end": {
-          "line": 195,
+          "line": 225,
           "column": 5
         }
       },
@@ -1097,39 +1126,38 @@
         },
         {
           "name": "value",
-          "description": "the value of the input",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-pattern.html",
-            "start": {
-              "line": 111,
-              "column": 10
-            },
-            "end": {
-              "line": 115,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "string",
-          "inheritedFrom": "InputPattern"
-        },
-        {
-          "name": "property-for-value",
-          "description": "defines the property that should be used for the value",
+          "description": "value of the input",
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 66,
+              "line": 50,
               "column": 10
             },
             "end": {
-              "line": 69,
+              "line": 53,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "property-for-value",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 96,
+              "column": 10
+            },
+            "end": {
+              "line": 100,
               "column": 11
             }
           },
           "metadata": {},
           "type": "string",
-          "inheritedFrom": "FormElementMixin"
+          "inheritedFrom": "TextInputMixin"
         },
         {
           "name": "type",
@@ -1137,11 +1165,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 94,
+              "line": 81,
               "column": 10
             },
             "end": {
-              "line": 97,
+              "line": 84,
               "column": 11
             }
           },
@@ -1155,11 +1183,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 102,
+              "line": 89,
               "column": 10
             },
             "end": {
-              "line": 106,
+              "line": 93,
               "column": 11
             }
           },
@@ -1173,11 +1201,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 120,
+              "line": 98,
               "column": 10
             },
             "end": {
-              "line": 122,
+              "line": 100,
               "column": 11
             }
           },
@@ -1191,11 +1219,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 127,
+              "line": 105,
               "column": 10
             },
             "end": {
-              "line": 129,
+              "line": 107,
               "column": 11
             }
           },
@@ -1209,29 +1237,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 134,
+              "line": 112,
               "column": 10
             },
             "end": {
-              "line": 136,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "number",
-          "inheritedFrom": "InputPattern"
-        },
-        {
-          "name": "maxlength",
-          "description": "the maxlength of the input",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-pattern.html",
-            "start": {
-              "line": 141,
-              "column": 10
-            },
-            "end": {
-              "line": 143,
+              "line": 114,
               "column": 11
             }
           },
@@ -1245,11 +1255,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 148,
+              "line": 119,
               "column": 10
             },
             "end": {
-              "line": 150,
+              "line": 121,
               "column": 11
             }
           },
@@ -1263,11 +1273,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 155,
+              "line": 126,
               "column": 10
             },
             "end": {
-              "line": 157,
+              "line": 128,
               "column": 11
             }
           },
@@ -1281,11 +1291,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 169,
+              "line": 140,
               "column": 10
             },
             "end": {
-              "line": 171,
+              "line": 142,
               "column": 11
             }
           },
@@ -1298,11 +1308,11 @@
           "description": "regular expression pattern of the input",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 67,
               "column": 10
             },
             "end": {
-              "line": 70,
+              "line": 71,
               "column": 11
             }
           },
@@ -1315,11 +1325,11 @@
           "description": "if `true`, autocomplete is enabled",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 76,
               "column": 10
             },
             "end": {
-              "line": 78,
+              "line": 79,
               "column": 11
             }
           },
@@ -1332,16 +1342,33 @@
           "description": "if `true`, spellcheck is enabled",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 84,
               "column": 10
             },
             "end": {
-              "line": 86,
+              "line": 87,
               "column": 11
             }
           },
           "metadata": {},
           "type": "boolean",
+          "inheritedFrom": "TextInputMixin"
+        },
+        {
+          "name": "maxlength",
+          "description": "maximum length of the input",
+          "sourceRange": {
+            "start": {
+              "line": 92,
+              "column": 10
+            },
+            "end": {
+              "line": 94,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
           "inheritedFrom": "TextInputMixin"
         }
       ],
@@ -1455,27 +1482,26 @@
         },
         {
           "name": "value",
-          "type": "string",
-          "description": "the value of the input",
+          "type": "Object",
+          "description": "value of the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 111,
+              "line": 50,
               "column": 10
             },
             "end": {
-              "line": 115,
+              "line": 53,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "observer": "\"_valueChanged\""
+              "notify": true
             }
           },
-          "inheritedFrom": "InputPattern"
+          "inheritedFrom": "FormElementMixin"
         },
         {
           "name": "_valueIsSet",
@@ -1502,25 +1528,24 @@
         {
           "name": "propertyForValue",
           "type": "string",
-          "description": "defines the property that should be used for the value",
+          "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 66,
+              "line": 96,
               "column": 10
             },
             "end": {
-              "line": 69,
+              "line": 100,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "\"_createReflectPropertyToValueObserver\""
+              "readOnly": true
             }
           },
-          "inheritedFrom": "FormElementMixin"
+          "defaultValue": "\"input\""
         },
         {
           "name": "type",
@@ -1530,11 +1555,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 94,
+              "line": 81,
               "column": 10
             },
             "end": {
-              "line": 97,
+              "line": 84,
               "column": 11
             }
           },
@@ -1552,11 +1577,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 102,
+              "line": 89,
               "column": 10
             },
             "end": {
-              "line": 106,
+              "line": 93,
               "column": 11
             }
           },
@@ -1576,11 +1601,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 120,
+              "line": 98,
               "column": 10
             },
             "end": {
-              "line": 122,
+              "line": 100,
               "column": 11
             }
           },
@@ -1597,11 +1622,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 127,
+              "line": 105,
               "column": 10
             },
             "end": {
-              "line": 129,
+              "line": 107,
               "column": 11
             }
           },
@@ -1618,32 +1643,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 134,
+              "line": 112,
               "column": 10
             },
             "end": {
-              "line": 136,
-              "column": 11
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "InputPattern"
-        },
-        {
-          "name": "maxlength",
-          "type": "number",
-          "description": "the maxlength of the input",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-pattern.html",
-            "start": {
-              "line": 141,
-              "column": 10
-            },
-            "end": {
-              "line": 143,
+              "line": 114,
               "column": 11
             }
           },
@@ -1660,11 +1664,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 148,
+              "line": 119,
               "column": 10
             },
             "end": {
-              "line": 150,
+              "line": 121,
               "column": 11
             }
           },
@@ -1681,11 +1685,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 155,
+              "line": 126,
               "column": 10
             },
             "end": {
-              "line": 157,
+              "line": 128,
               "column": 11
             }
           },
@@ -1702,11 +1706,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 162,
+              "line": 133,
               "column": 10
             },
             "end": {
-              "line": 164,
+              "line": 135,
               "column": 11
             }
           },
@@ -1723,11 +1727,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 169,
+              "line": 140,
               "column": 10
             },
             "end": {
-              "line": 171,
+              "line": 142,
               "column": 11
             }
           },
@@ -1743,11 +1747,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 67,
               "column": 10
             },
             "end": {
-              "line": 70,
+              "line": 71,
               "column": 11
             }
           },
@@ -1765,11 +1769,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 76,
               "column": 10
             },
             "end": {
-              "line": 78,
+              "line": 79,
               "column": 11
             }
           },
@@ -1785,11 +1789,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 84,
               "column": 10
             },
             "end": {
-              "line": 86,
+              "line": 87,
               "column": 11
             }
           },
@@ -1797,6 +1801,25 @@
             "polymer": {}
           },
           "defaultValue": "false"
+        },
+        {
+          "name": "maxlength",
+          "type": "number",
+          "description": "maximum length of the input",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 92,
+              "column": 10
+            },
+            "end": {
+              "line": 94,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
         }
       ],
       "methods": [
@@ -1807,11 +1830,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 183,
+              "line": 162,
               "column": 6
             },
             "end": {
-              "line": 194,
+              "line": 170,
               "column": 7
             }
           },
@@ -1825,16 +1848,23 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 96,
+              "line": 111,
               "column": 6
             },
             "end": {
-              "line": 98,
+              "line": 113,
               "column": 7
             }
           },
           "metadata": {},
-          "params": []
+          "params": [
+            {
+              "name": "req"
+            },
+            {
+              "name": "v"
+            }
+          ]
         },
         {
           "name": "_computeValueIsSet",
@@ -1861,20 +1891,22 @@
         },
         {
           "name": "validate",
-          "description": "",
+          "description": "validates the input for iron-form",
           "privacy": "public",
           "sourceRange": {
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 100,
+              "line": 96,
               "column": 6
             },
             "end": {
-              "line": 110,
+              "line": 98,
               "column": 7
             }
           },
           "metadata": {},
-          "params": []
+          "params": [],
+          "inheritedFrom": "FormElementMixin"
         },
         {
           "name": "_attachDom",
@@ -1910,7 +1942,7 @@
               "column": 6
             },
             "end": {
-              "line": 119,
+              "line": 126,
               "column": 7
             }
           },
@@ -1927,23 +1959,21 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 121,
+              "line": 173,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 177,
               "column": 7
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "v"
+              "name": "input"
             }
-          ],
-          "inheritedFrom": "FormElementMixin"
+          ]
         },
         {
           "name": "_reflectValueToProperty",
@@ -1952,11 +1982,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 125,
+              "line": 132,
               "column": 6
             },
             "end": {
-              "line": 127,
+              "line": 134,
               "column": 7
             }
           },
@@ -1975,11 +2005,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 196,
+              "line": 172,
               "column": 6
             },
             "end": {
-              "line": 199,
+              "line": 175,
               "column": 7
             }
           },
@@ -1994,11 +2024,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 201,
+              "line": 177,
               "column": 6
             },
             "end": {
-              "line": 206,
+              "line": 182,
               "column": 7
             }
           },
@@ -2013,11 +2043,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 208,
+              "line": 184,
               "column": 6
             },
             "end": {
-              "line": 213,
+              "line": 189,
               "column": 7
             }
           },
@@ -2032,11 +2062,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 218,
+              "line": 194,
               "column": 6
             },
             "end": {
-              "line": 221,
+              "line": 197,
               "column": 7
             }
           },
@@ -2051,11 +2081,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 226,
+              "line": 202,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 205,
               "column": 7
             }
           },
@@ -2074,11 +2104,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 231,
+              "line": 207,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 226,
               "column": 7
             }
           },
@@ -2096,11 +2126,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 135,
               "column": 6
             },
             "end": {
-              "line": 127,
+              "line": 140,
               "column": 7
             }
           },
@@ -2112,41 +2142,17 @@
           ]
         },
         {
-          "name": "_valueChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 129,
-              "column": 6
-            },
-            "end": {
-              "line": 139,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "value"
-            },
-            {
-              "name": "oldValue"
-            }
-          ]
-        },
-        {
           "name": "_defaultChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 269,
+              "line": 238,
               "column": 6
             },
             "end": {
-              "line": 273,
+              "line": 242,
               "column": 7
             }
           },
@@ -2163,13 +2169,12 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 275,
+              "line": 162,
               "column": 6
             },
             "end": {
-              "line": 279,
+              "line": 171,
               "column": 7
             }
           },
@@ -2178,8 +2183,7 @@
             {
               "name": "e"
             }
-          ],
-          "inheritedFrom": "InputPattern"
+          ]
         },
         {
           "name": "_updateValue",
@@ -2188,11 +2192,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 281,
+              "line": 250,
               "column": 6
             },
             "end": {
-              "line": 285,
+              "line": 254,
               "column": 7
             }
           },
@@ -2211,11 +2215,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 287,
+              "line": 256,
               "column": 6
             },
             "end": {
-              "line": 306,
+              "line": 275,
               "column": 7
             }
           },
@@ -2230,11 +2234,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 311,
+              "line": 280,
               "column": 6
             },
             "end": {
-              "line": 327,
+              "line": 300,
               "column": 7
             }
           },
@@ -2249,11 +2253,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 329,
+              "line": 302,
               "column": 6
             },
             "end": {
-              "line": 334,
+              "line": 307,
               "column": 7
             }
           },
@@ -2268,11 +2272,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 336,
+              "line": 309,
               "column": 6
             },
             "end": {
-              "line": 338,
+              "line": 311,
               "column": 7
             }
           },
@@ -2281,16 +2285,40 @@
           "inheritedFrom": "InputPattern"
         },
         {
+          "name": "_validate",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 115,
+              "column": 6
+            },
+            "end": {
+              "line": 124,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "v"
+            },
+            {
+              "name": "req"
+            }
+          ]
+        },
+        {
           "name": "_patternChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 126,
               "column": 6
             },
             "end": {
-              "line": 119,
+              "line": 133,
               "column": 7
             }
           },
@@ -2302,16 +2330,40 @@
           ]
         },
         {
+          "name": "_valueChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 142,
+              "column": 6
+            },
+            "end": {
+              "line": 152,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "oldValue"
+            }
+          ]
+        },
+        {
           "name": "_computeSpellcheckAttribute",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 154,
               "column": 6
             },
             "end": {
-              "line": 143,
+              "line": 156,
               "column": 7
             }
           },
@@ -2328,11 +2380,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 145,
+              "line": 158,
               "column": 6
             },
             "end": {
-              "line": 147,
+              "line": 160,
               "column": 7
             }
           },
@@ -2353,7 +2405,7 @@
           "column": 2
         },
         "end": {
-          "line": 150,
+          "line": 180,
           "column": 3
         }
       },
@@ -2434,39 +2486,37 @@
         },
         {
           "name": "value",
-          "description": "the value of the input",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-pattern.html",
-            "start": {
-              "line": 111,
-              "column": 10
-            },
-            "end": {
-              "line": 115,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "string",
-          "inheritedFrom": "InputPattern"
-        },
-        {
-          "name": "property-for-value",
-          "description": "defines the property that should be used for the value",
+          "description": "value of the input",
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 66,
+              "line": 50,
               "column": 10
             },
             "end": {
-              "line": 69,
+              "line": 53,
               "column": 11
             }
           },
           "metadata": {},
-          "type": "string",
+          "type": "Object",
           "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "property-for-value",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 96,
+              "column": 10
+            },
+            "end": {
+              "line": 100,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
         },
         {
           "name": "type",
@@ -2474,11 +2524,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 94,
+              "line": 81,
               "column": 10
             },
             "end": {
-              "line": 97,
+              "line": 84,
               "column": 11
             }
           },
@@ -2492,11 +2542,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 102,
+              "line": 89,
               "column": 10
             },
             "end": {
-              "line": 106,
+              "line": 93,
               "column": 11
             }
           },
@@ -2510,11 +2560,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 120,
+              "line": 98,
               "column": 10
             },
             "end": {
-              "line": 122,
+              "line": 100,
               "column": 11
             }
           },
@@ -2528,11 +2578,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 127,
+              "line": 105,
               "column": 10
             },
             "end": {
-              "line": 129,
+              "line": 107,
               "column": 11
             }
           },
@@ -2546,29 +2596,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 134,
+              "line": 112,
               "column": 10
             },
             "end": {
-              "line": 136,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "number",
-          "inheritedFrom": "InputPattern"
-        },
-        {
-          "name": "maxlength",
-          "description": "the maxlength of the input",
-          "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-pattern.html",
-            "start": {
-              "line": 141,
-              "column": 10
-            },
-            "end": {
-              "line": 143,
+              "line": 114,
               "column": 11
             }
           },
@@ -2582,11 +2614,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 148,
+              "line": 119,
               "column": 10
             },
             "end": {
-              "line": 150,
+              "line": 121,
               "column": 11
             }
           },
@@ -2600,11 +2632,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 155,
+              "line": 126,
               "column": 10
             },
             "end": {
-              "line": 157,
+              "line": 128,
               "column": 11
             }
           },
@@ -2618,11 +2650,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\input-pattern.html",
             "start": {
-              "line": 169,
+              "line": 140,
               "column": 10
             },
             "end": {
-              "line": 171,
+              "line": 142,
               "column": 11
             }
           },
@@ -2635,11 +2667,11 @@
           "description": "regular expression pattern of the input",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 67,
               "column": 10
             },
             "end": {
-              "line": 70,
+              "line": 71,
               "column": 11
             }
           },
@@ -2651,11 +2683,11 @@
           "description": "if `true`, autocomplete is enabled",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 76,
               "column": 10
             },
             "end": {
-              "line": 78,
+              "line": 79,
               "column": 11
             }
           },
@@ -2667,16 +2699,32 @@
           "description": "if `true`, spellcheck is enabled",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 84,
               "column": 10
             },
             "end": {
-              "line": 86,
+              "line": 87,
               "column": 11
             }
           },
           "metadata": {},
           "type": "boolean"
+        },
+        {
+          "name": "maxlength",
+          "description": "maximum length of the input",
+          "sourceRange": {
+            "start": {
+              "line": 92,
+              "column": 10
+            },
+            "end": {
+              "line": 94,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number"
         }
       ],
       "events": [],
