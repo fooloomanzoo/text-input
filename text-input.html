@@ -50,8 +50,9 @@
             value="{{input::input}}"
             placeholder="[[placeholder]]"
             pattern="[[pattern]]"
-            disabled="[[disabled]]"
-            required="[[required]]"
+            disabled$="[[disabled]]"
+            required$="[[required]]"
+            maxlength$="[[maxlength]]"
             autocomplete$="[[_computeAutocompleteAttribute(autocomplete)]]"
             spellcheck$="[[_computeSpellcheckAttribute(spellcheck)]]">
         `;
@@ -86,6 +87,13 @@
             value: false
           },
 
+          /**
+           * maximum length of the input
+           */
+          maxlength: {
+            type: Number
+          },
+
           propertyForValue: {
             type: String,
             readOnly: true,
@@ -95,20 +103,25 @@
         }
       }
 
-      _computeInvalid() {
-        this.invalid = this.validate();
+      static get observers() {
+        return [
+          '_computeInvalid(required, input)'
+        ]
       }
 
-      validate() {
-        if (this.disabled) {
+      _computeInvalid(req, v) {
+        this.invalid = !this._validate(v, req);
+      }
+
+      _validate(v, req) {
+        if (this._validationRegExp) {
+          if ((this._validationRegExp.exec(v) !== null) && !(req && !v)) {
+            return true;
+          }
           return false;
+        } else {
+          return !(req && !v);
         }
-        if (!(this._validationRegExp && this._validationRegExp.exec(this.input) === null) && !(this.required && !this.input)) {
-          return true;
-        } else if (!(this._validationRegExp && this._validationRegExp.exec(this.value) === null) && !(this.required && !this.value)) {
-          return true;
-        }
-        return false;
       }
 
       _patternChanged(pattern) {
@@ -122,7 +135,6 @@
 
       _inputChanged(input) {
         if (input === undefined) return;
-        console.log(this._validationRegExp && this._validationRegExp.exec(input));
         if (!(this._validationRegExp && this._validationRegExp.exec(input) === null)) {
           this.value = input;
         }
@@ -130,7 +142,6 @@
 
       _valueChanged(value, oldValue) {
         if (value === undefined) return;
-        console.log(value, oldValue);
 
         if (!(this._validationRegExp && this._validationRegExp.exec(value) === null)) {
           this.input = value;
@@ -149,8 +160,18 @@
         return autocomplete ? 'on' : 'off';
       }
 
+      _checkInput(e) {
+        if (this.invalid) {
+          this._updateValue(e);
+          return;
+        } else {
+          this._inputChanged(this.input || '');
+        }
+        this._debouncedComputeWidth();
+        e && e.stopPropagation && e.stopPropagation();
+      }
+
       _reflectPropertyToValue(input) {
-        console.log(input, this.invalid);
         if (!this.invalid) {
           this.value = input;
         }
