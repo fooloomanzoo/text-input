@@ -22,13 +22,12 @@
     "input-picker-pattern": "fooloomanzoo/input-picker-pattern#2"
   },
   "devDependencies": {
-    "webcomponentsjs": "webcomponents/webcomponentsjs",
-    "iron-component-page": "PolymerElements/iron-component-page",
-    "iron-flex-layout": "PolymerElements/iron-flex-layout",
-    "iron-form": "PolymerElements/iron-form",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers"
-  },
-  "resolutions": {
-    "webcomponentsjs": "^1.0.0"
+    "webcomponentsjs": "webcomponents/webcomponentsjs#1",
+    "iron-component-page": "PolymerElements/iron-component-page#3",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#2",
+    "iron-form": "PolymerElements/iron-form#2",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#2",
+    "web-component-tester": "^6.5.0"
   }
 }

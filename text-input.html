@@ -93,77 +93,29 @@
            */
           maxlength: {
             type: Number
-          },
-
-          propertyForValue: {
-            type: String,
-            readOnly: true,
-            value: 'input'
-          },
-
-          /**
-           * the (valid) value of the input
-           */
-          value: {
-            notify: true,
-            observer: '_valueChanged'
           }
-        }
-      }
-
-      static get observers() {
-        return [
-          '_computeInvalid(required, input)'
-        ]
-      }
-
-      _computeInvalid(req, v) {
-        this.invalid = !this._validate(req, v || '');
-      }
-
-      _validate(req, v) {
-        if (this._validationRegExp) {
-          if ((this._validationRegExp.exec(v) !== null) && !(req && !v)) {
-            return true;
-          }
-          return false;
-        } else {
-          return !(req && !v);
         }
       }
 
       _patternChanged(pattern) {
         if (!pattern) {
           this._validationRegExp = null;
-          return;
+        } else {
+          this._validationRegExp = new RegExp(pattern);
         }
-        this._validationRegExp = new RegExp(pattern);
-        this._computeInvalid(this.required, this.value || '');
+        this._computeValueIsSet(this.value);
+        this._computeInvalid(this.value, this.required);
       }
 
-      _inputChanged(input) {
-        if (input === undefined) {
-          this._debouncedComputeWidth();
-          return;
-        };
-        if (!(this._validationRegExp && this._validationRegExp.exec(input) === null)) {
-          this.value = input;
-        }
-      }
-
-      _valueChanged(value, oldValue) {
-        if (value === undefined) {
-          this._debouncedComputeWidth();
-          return;
-        };
-
-        if (!(this._validationRegExp && this._validationRegExp.exec(value) === null)) {
-          this.input = value;
-          this._debouncedComputeWidth();
-        } else if (oldValue !== undefined && this._validationRegExp.exec(oldValue) !== null) {
-          this.value = oldValue;
-          this._debouncedComputeWidth();
-        }
+      /**
+       * @overwrite
+       * validate a value (when required)
+       * @param  {Object} value      value to validate
+       * @param  {Boolean} required  whether the value is required
+       * @return {Boolean}           true, if the value is valid
+       */
+      _validate(value) {
+        return !(this._validationRegExp && this._validationRegExp.exec(value) === null) && super._validate(value);
       }
 
       _computeSpellcheckAttribute(spellcheck) {
@@ -173,24 +125,6 @@
       _computeAutocompleteAttribute(autocomplete) {
         return autocomplete ? 'on' : 'off';
       }
-
-      _checkInput(e) {
-        if (this.invalid) {
-          this._updateValue(e);
-          return;
-        } else {
-          this._inputChanged(this.input || '');
-        }
-        this._debouncedComputeWidth();
-        e && e.stopPropagation && e.stopPropagation();
-      }
-
-      _reflectPropertyToValue(input) {
-        if (!this.invalid) {
-          this.value = input;
-        }
-      }
-
     }
   }
 

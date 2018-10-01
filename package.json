@@ -13,7 +13,8 @@
     "build": "git pull && polymer analyze > analysis.json",
     "prestart": "polymer analyze > analysis.json",
     "start": "polymer serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "polymer test",
+    "test:p": "polymer test -p --config-file=wct.p.conf.js"
   },
   "keywords": [
     "input",
@@ -22,5 +23,14 @@
     "text"
   ],
   "author": "fooloomanzoo",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@polymer/polymer": "^2",
+    "@fooloomanzoo/input-picker-pattern": "^2"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "*",
+    "@webcomponents/webcomponentsjs": "*",
+    "wct-browser-legacy": "*"
+  }
 }
