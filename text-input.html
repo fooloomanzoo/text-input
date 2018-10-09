@@ -17,12 +17,8 @@
       static get styleTemplate() {
         return `
           ${super.styleTemplate || ''}
-          #minsize,
-          #size,
           #input {
             @apply --text-input;
-            margin: 0;
-            min-width: 1ch;
           }
           :host(:focus) #input,
           :host(:hover) #input,
@@ -103,8 +99,11 @@
         } else {
           this._validationRegExp = new RegExp(pattern);
         }
-        this._computeValueIsSet(this.value);
-        this._computeInvalid(this.value, this.required);
+        if (this._valueIsSet) {
+          this._computeInvalid(this.value);
+        } else {
+          this._computeInvalid(this.input);
+        }
       }
 
       /**

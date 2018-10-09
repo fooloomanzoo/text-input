@@ -30,7 +30,7 @@
 
     <test-fixture id="Pattern">
       <template>
-        <text-input pattern="$ab"></text-input>
+        <text-input pattern="ab.*"></text-input>
       </template>
     </test-fixture>
 
@@ -54,7 +54,7 @@
 
         setup(function() {
           if (specifier) {
-            replace('basic-input-element').with(specifier)
+            replace('text-input').with(specifier)
           }
           element = fixture('Basic');
         });
@@ -67,6 +67,76 @@
           done();
         });
 
+        test('setting a pattern', function(done) {
+          element.pattern = 'ab.*';
+          assert.isOk(element.pattern, 'pattern is okay');
+          assert.isOk(element._validationRegExp, '_validationRegExp is okay');
+          assert.isTrue(element.invalid, 'element is invalid when setting invalid value');
+          element.value = 'abc';
+          assert.isFalse(element.invalid, 'element is not invalid when setting valid value');
+          element.value = 'bc';
+          assert.isTrue(element.invalid, 'element is invalid when setting invalid value');
+          element.input = 'abcd';
+          assert.isFalse(element.invalid, 'element is not invalid when setting valid input');
+          element.input = 'bc';
+          assert.isTrue(element.invalid, 'element is invalid when setting invalid input');
+          done();
+        });
+      });
+
+      suite('type', function() {
+        let f;
+
+        setup(function() {
+          if (specifier) {
+            replace('text-input').with(specifier)
+          }
+          f = fixture('Type');
+        });
+
+        test('setting type', function(done) {
+          let element = f.querySelector('#email');
+          assert.equal(element.shadowRoot.querySelector('#input').type, 'email', 'type \'email\' is set');
+          element = f.querySelector('#password');
+          assert.equal(element.shadowRoot.querySelector('#input').type, 'password', 'type \'password\' is set');
+          done();
+        });
+      });
+
+      suite('pattern', function() {
+        let element;
+
+        setup(function() {
+          if (specifier) {
+            replace('text-input').with(specifier)
+          }
+          element = fixture('Pattern');
+        });
+
+        test('validate a value', function(done) {
+          element.value = 'abc';
+          assert.isFalse(element.invalid, 'element is not invalid when setting valid value');
+          element.value = 'bc';
+          assert.isTrue(element.invalid, 'element is invalid when setting invalid value');
+          done();
+        });
+
+        test('validate a input', function(done) {
+          element.input = 'abcd';
+          assert.isFalse(element.invalid, 'element is not invalid when setting valid input');
+          element.input = 'bc';
+          assert.isTrue(element.invalid, 'element is invalid when setting invalid input');
+          done();
+        });
+
+        test('changing pattern', function(done) {
+          element.input = 'bc';
+          assert.isTrue(element.invalid, 'element is invalid when setting invalid input');
+          element.pattern = 'b.*';
+          assert.isOk(element._validationRegExp, 'pattern is created');
+          assert.isFalse(element.invalid, 'element is not invalid changing to a matching regexp');
+          done();
+        });
       });
     </script>
 
