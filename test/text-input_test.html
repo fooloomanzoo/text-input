@@ -42,7 +42,7 @@
       if (specifier) {
         suite(`Suite for ${specifier.toUpperCase()}`, function() {
           test('loading dependencies', done => {
-            Polymer.importHref(url, e => done(), e => {
+            Polymer.importHref(window.location.origin + '/components/' + url, e => done(), e => {
               console.warn(`failed to load: ${url}`)
             })
           })
