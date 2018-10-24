@@ -57,7 +57,6 @@
 
       static get properties() {
         return {
-
           /**
            * regular expression pattern of the input
            * @type {string}
@@ -94,27 +93,18 @@
       }
 
       _patternChanged(pattern) {
-        if (!pattern) {
+        if (typeof pattern !== 'string' && (pattern instanceof RegExp) === false) {
           this._validationRegExp = null;
+          // set validation function to default
+          this._validate = this._defaultValidate.bind(this);
         } else {
           this._validationRegExp = new RegExp(pattern);
+          // set validation function to validate with _validationRegExp and the _defaultValidate function
+          const validate = function(value, required) {
+            return !(this._validationRegExp.exec(value) === null) && this._defaultValidate(value, required);
+          }
+          this._validate = validate.bind(this);
         }
-        if (this._valueIsSet) {
-          this._computeInvalid(this.value);
-        } else {
-          this._computeInvalid(this.input);
-        }
-      }
-
-      /**
-       * @overwrite
-       * validate a value (when required)
-       * @param  {Object} value      value to validate
-       * @param  {Boolean} required  whether the value is required
-       * @return {Boolean}           true, if the value is valid
-       */
-      _validate(value) {
-        return !(this._validationRegExp && this._validationRegExp.exec(value) === null) && super._validate(value);
       }
 
       _computeSpellcheckAttribute(spellcheck) {
