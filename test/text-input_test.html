@@ -57,6 +57,7 @@
           element.pattern = 'ab.*';
           assert.isOk(element.pattern, 'pattern is okay');
           assert.isOk(element._validationRegExp, '_validationRegExp is okay');
+          element.value = '';
           assert.isTrue(element.invalid, 'element is invalid when setting invalid value');
           element.value = 'abc';
           assert.isFalse(element.invalid, 'element is not invalid when setting valid value');
