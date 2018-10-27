@@ -45,11 +45,11 @@
             type="[[type]]"
             value="{{input::input}}"
             placeholder="[[placeholder]]"
-            pattern="[[_inputValidationPattern]]"
             disabled$="[[disabled]]"
             required$="[[required]]"
             maxlength$="[[maxlength]]"
             title$="[[title]]"
+            pattern="[[_computInputValidationPattern(pattern)]]"
             autocomplete$="[[_computeAutocompleteAttribute(autocomplete)]]"
             spellcheck$="[[_computeSpellcheckAttribute(spellcheck)]]">
         `;
@@ -88,11 +88,6 @@
            */
           maxlength: {
             type: Number
-          },
-
-          _inputValidationPattern: {
-            type: String,
-            computed: '_computInputValidationPattern(pattern)'
           }
         }
       }
