@@ -91,7 +91,7 @@
           }
         }
       }
-
+      
       _computInputValidationPattern(pattern) {
         if (typeof pattern === 'string' || pattern instanceof RegExp) {
           try {
@@ -111,17 +111,15 @@
 
       _patternChanged(pattern) {
         if (typeof pattern !== 'string' && (pattern instanceof RegExp) === false) {
-          this._validationRegExp = null;
           // set validation function to default
-          this._validate = this._defaultValidate.bind(this);
           this._isSet = this._defaultIsSet.bind(this);
         } else {
-          this._validationRegExp = new RegExp(pattern);
+          const validationRegExp = new RegExp(pattern);
           // set validation function to validate with _validationRegExp and the _defaultValidate function
-          const validate = function(value, required) {
-            return this._defaultValidate(value, required) && !(this._validationRegExp.exec(value) === null);
+          const isSet = function(value, required) {
+            return this._defaultValidate(value, required) && !(validationRegExp.exec(value) === null);
           }
-          this._isSet = this._validate = validate.bind(this);
+          this._isSet = isSet.bind(this);
         }
       }
 
