@@ -56,17 +56,18 @@
         test('setting a pattern', function(done) {
           element.pattern = 'ab.*';
           assert.isOk(element.pattern, 'pattern is okay');
-          assert.isOk(element._validationRegExp, '_validationRegExp is okay');
-          element.value = '';
-          assert.isTrue(element.invalid, 'element is invalid when setting invalid value');
+          assert.notEqual(element._isSet, element._defaultIsSet, '_isSet is changes');
           element.value = 'abc';
-          assert.isFalse(element.invalid, 'element is not invalid when setting valid value');
+          assert.isFalse(element.invalid, 'element is not invalid when setting valid value "abc"');
+          element.value = '';
+          console.log(element.value, element._isSet(element.value));
+          assert.isTrue(element.invalid, 'element is invalid when setting invalid value ""');
           element.value = 'bc';
-          assert.isTrue(element.invalid, 'element is invalid when setting invalid value');
+          assert.isTrue(element.invalid, 'element is invalid when setting invalid value "bc"');
           element.input = 'abcd';
-          assert.isFalse(element.invalid, 'element is not invalid when setting valid input');
+          assert.isFalse(element.invalid, 'element is not invalid when setting valid input "abcd"');
           element.input = 'bc';
-          assert.isTrue(element.invalid, 'element is invalid when setting invalid input');
+          assert.isTrue(element.invalid, 'element is invalid when setting invalid input "bc"');
           done();
         });
       });
@@ -111,10 +112,11 @@
         });
 
         test('changing pattern', function(done) {
+          const isSet = element._isSet;
           element.input = 'bc';
           assert.isTrue(element.invalid, 'element is invalid when setting invalid input');
           element.pattern = 'b.*';
-          assert.isOk(element._validationRegExp, 'pattern is created');
+          assert.notEqual(element._isSet, isSet, '_isSet is changes');
           assert.isFalse(element.invalid, 'element is not invalid changing to a matching regexp');
           done();
         });

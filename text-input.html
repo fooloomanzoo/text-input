@@ -91,7 +91,7 @@
           }
         }
       }
-      
+
       _computInputValidationPattern(pattern) {
         if (typeof pattern === 'string' || pattern instanceof RegExp) {
           try {
@@ -110,17 +110,30 @@
       }
 
       _patternChanged(pattern) {
-        if (typeof pattern !== 'string' && (pattern instanceof RegExp) === false) {
-          // set validation function to default
-          this._isSet = this._defaultIsSet.bind(this);
-        } else {
-          const validationRegExp = new RegExp(pattern);
-          // set validation function to validate with _validationRegExp and the _defaultValidate function
-          const isSet = function(value, required) {
-            return this._defaultValidate(value, required) && !(validationRegExp.exec(value) === null);
+        let isSet, validate, validationRegExp;
+        if (typeof pattern === 'string' || pattern instanceof RegExp) {
+          try {
+            validationRegExp = new RegExp(pattern);
+          } catch(err) {
+            console.warn(err);
+            validationRegExp = null;
           }
-          this._isSet = isSet.bind(this);
         }
+        if (validationRegExp) {
+          // set validation function to validate with _validationRegExp and the _defaultValidate function
+          isSet = function(value) {
+            return this._defaultIsSet(value) && !(this._validationRegExp.exec(value) === null);
+          }
+          validate = function(_isSet, value, required) {
+            return _isSet(value);
+          }
+        } else {
+          isSet = this._defaultIsSet;
+          validate = this._defaultValidate;
+        }
+        this._validationRegExp = validationRegExp;
+        this._isSet = isSet.bind(this);
+        this._validate = validate.bind(this);
       }
 
       _computeSpellcheckAttribute(spellcheck) {
