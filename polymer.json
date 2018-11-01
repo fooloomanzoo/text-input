@@ -1,5 +1,8 @@
 {
   "moduleResolution": "none",
+  "sources": [
+    "text-input.html"
+  ],
   "lint": {
     "rules": [
       "polymer-2"
