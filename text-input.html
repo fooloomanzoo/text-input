@@ -124,11 +124,16 @@
           isSet = function(value) {
             return this._defaultIsSet(value) && !(this._validationRegExp.exec(value) === null);
           }
+          validate = function(_isSet, value, required) {
+            return _isSet(value);
+          }
         } else {
           isSet = this._defaultIsSet;
+          validate = this._defaultValidate;
         }
         this._validationRegExp = validationRegExp;
         this._isSet = isSet.bind(this);
+        this._validate = validate.bind(this);
       }
 
       _computeSpellcheckAttribute(spellcheck) {
