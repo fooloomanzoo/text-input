@@ -1,11 +1,12 @@
 {
-  "moduleResolution": "none",
+  "moduleResolution": "node",
+  "npm": true,
   "sources": [
-    "text-input.html"
+    "text-input.js"
   ],
   "lint": {
     "rules": [
-      "polymer-2"
+      "polymer-3"
     ]
   }
 }

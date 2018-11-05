@@ -6,14 +6,13 @@
 
     <title>text-input in iron-form demo</title>
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../../iron-form/iron-form.html">
-    <link rel="import" href="../../paper-styles/shadow.html">
-
-    <link rel="import" href="../text-input.html">
+    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+      import '@polymer/iron-demo-helpers/demo-snippet';
+      import '@polymer/iron-form/iron-form';
+      import '../text-input.js';
+    </script>
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
@@ -35,7 +34,7 @@
           --input-invalid-border-style: dashed;
           --input-placeholder: {
             font-style: italic;
-            font-size: 0.75em;
+            font-size: 0.9em;
           };
         }
         iron-form {
@@ -50,23 +49,24 @@
       </style>
     </custom-style>
   </head>
+
   <body>
     <div class="vertical-section-container centered">
       <h3>text-input in <code>iron-form</code></h3>
       <demo-snippet>
         <template>
           <label>
-            <input type="checkbox" checked onchange="form1.allowRedirect = !this.checked;">Prevent automatic form redirection
+            <input type="checkbox" checked="" onchange="form1.allowRedirect = !this.checked;">Prevent automatic form redirection
           </label>
           <br><br>
 
           <iron-form id="form1">
             <form action="/foo" method="get">
-              name: <text-input name="name" required value="Batman" placeholder="name"></text-input><br>
-              job: <text-input name="job" required value="Hero" placeholder="job"></text-input><br>
-              destination: <text-input name="destination" required placeholder="destination"></text-input><br>
-              cape color: <text-input name="color" default="#111" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" minlength="4" placeholder="cape color"></text-input><br>
-              email: <text-input name="email" required type="email" placeholder="your.name@gotham.org"></text-input><br>
+              name: <text-input name="name" required="" value="Batman" placeholder="name"></text-input><br>
+              job: <text-input name="job" required="" value="Hero" placeholder="job"></text-input><br>
+              destination: <text-input name="destination" required="" placeholder="destination"></text-input><br>
+              cape color: <text-input name="color" value="#111" required pattern="#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})" minlength="4" placeholder="cape color"></text-input><br>
+              email: <text-input name="email" required="" type="email" placeholder="your.name@gotham.org"></text-input><br>
               <button onclick="form1.submit()">Submit</button>
               <button onclick="form1.validate()">Validate</button>
             </form>
@@ -80,5 +80,6 @@
           </script>
         </template>
       </demo-snippet>
+    </div>
   </body>
 </html>
