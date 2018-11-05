@@ -1,8 +1,19 @@
 {
-  "name": "@fooloomanzoo/text-input",
-  "version": "2.0.9",
   "description": "input for text",
-  "main": "index.html",
+  "keywords": [
+    "input",
+    "polymer",
+    "webcomponents",
+    "text"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fooloomanzoo/text-input.git"
+  },
+  "homepage": "https://github.com/fooloomanzoo/text-input/",
+  "name": "@fooloomanzoo/text-input",
+  "version": "3.0.0",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
@@ -16,24 +27,19 @@
     "test": "polymer test",
     "test:p": "polymer test -p --config-file=wct.p.conf.js"
   },
-  "keywords": [
-    "input",
-    "polymer",
-    "webcomponents",
-    "text"
-  ],
   "author": "fooloomanzoo",
   "license": "MIT",
   "dependencies": {
-    "@polymer/polymer": "^2.6.1",
-    "@fooloomanzoo/input-picker-pattern": "^2"
+    "@polymer/polymer": "^3",
+    "@fooloomanzoo/input-picker-pattern": "^3"
   },
   "devDependencies": {
-    "web-component-tester": "^6.5.0",
-    "@webcomponents/webcomponentsjs": "^1",
-    "@polymer/iron-component-page": "^3",
-    "@polymer/iron-flex-layout": "^2",
-    "@polymer/iron-demo-helpers": "^2",
-    "@polymer/iron-form": "^2"
+    "@webcomponents/webcomponentsjs": "^2",
+    "@polymer/iron-component-page": "^4",
+    "@polymer/iron-flex-layout": "^3",
+    "@polymer/iron-demo-helpers": "^3",
+    "@polymer/iron-form": "^3",
+    "@polymer/iron-test-helpers": "^3",
+    "wct-browser-legacy": "^1"
   }
 }

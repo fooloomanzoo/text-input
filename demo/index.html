@@ -8,11 +8,26 @@
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../text-input.html">
+    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>-pages-shared-styles.js"></script>
+    <script type="module" src="../../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../text-input.js"></script>
 
     <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        .result {
+          margin: 0.5em;
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
         .result {
           margin: 0.5em;
@@ -22,10 +37,16 @@
           padding: 0.25em;
         }
       </style>
-    </custom-style>
-  </head>
-  <body>
-    <div class="vertical-section-container centered">
+    </custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>>
+        <h4>Simple demo</h4>
+        <template>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
       <demo-snippet>
         <h4>Simple demo</h4>
         <template>
@@ -54,9 +75,16 @@
           </dom-bind>
         </template>
       </demo-snippet>
-    </div>
+    </div>`;
 
-    <div class="vertical-section-container centered">
+document.body.appendChild($_documentContainer.content);
+</script>4>With regular expression (for hex-colors)</h4>
+        <template>
+          <dom-bind>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
       <demo-snippet>
         <h4>With regular expression (for hex-colors)</h4>
         <template>
@@ -83,7 +111,7 @@
                   }
                 </style>
               </custom-style>
-              <text-input id="hex" value="{{value}}" default="#111" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" minlength="7"></text-input>
+              <text-input id="hex" value="{{value}}" default="#111" required="" pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\$" minlength="7"></text-input>
               <div class="vertical-section-container result">
                 <div><code>value</code>: <b>[[value]]</b></div>
               </div>
@@ -91,9 +119,16 @@
           </dom-bind>
         </template>
       </demo-snippet>
-    </div>
+    </div>`;
 
-    <div class="vertical-section-container centered">
+document.body.appendChild($_documentContainer.content);
+</script>emplate>
+          <dom-bind>
+            <template is="dom-bind">
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
       <demo-snippet>
         <h4>email</h4>
         <template>
@@ -125,7 +160,7 @@
                   }
                 </style>
               </custom-style>
-              <text-input id="email" type="email" value="{{value}}" required placeholder="your.name@domain.org"></text-input>
+              <text-input id="email" type="email" value="{{value}}" required="" placeholder="your.name@domain.org"></text-input>
               <div class="vertical-section-container result">
                 <div><code>value</code>: <b>[[value]]</b></div>
               </div>
@@ -133,15 +168,22 @@
           </dom-bind>
         </template>
       </demo-snippet>
-    </div>
+    </div>`;
 
-    <div class="vertical-section-container centered">
+document.body.appendChild($_documentContainer.content);
+</script><dom-bind>
+            <template is="dom-bind">
+              <text-input value="{{value}}" input="{{input}}" minlength="5" maxlength="15" placeholder="..." auto-resize></text-input>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
       <demo-snippet>
-        <h4>minlenght & maxlength</h4>
+        <h4>minlenght &amp; maxlength</h4>
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <text-input value="{{value}}" input="{{input}}" minlength="5" maxlength="15" placeholder="..." auto-resize></text-input>
+              <text-input value="{{value}}" input="{{input}}" minlength="5" maxlength="15" placeholder="..." auto-resize=""></text-input>
               <div class="vertical-section-container result">
                 <div><code>input</code>: <b>[[input]]</b></div>
                 <div><code>value</code>: <b>[[value]]</b></div>
@@ -150,7 +192,7 @@
           </dom-bind>
         </template>
       </demo-snippet>
-    </div>
+    </div>`;
 
-  </body>
-</html>
+document.body.appendChild($_documentContainer.content);
+</script>

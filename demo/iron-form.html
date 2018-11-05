@@ -8,14 +8,30 @@
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../../iron-form/iron-form.html">
-    <link rel="import" href="../../paper-styles/shadow.html">
+    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>-pages-shared-styles.js"></script>
+    <script type="module" src="../../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../../../@polymer/iron-form/iron-form.js"></script>
+    <script type="module" src="../../../@polymer/paper-styles/shadow.js"></script>
 
-    <link rel="import" href="../text-input.html">
+    <script type="module" src="../text-input.js"></script>
 
     <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        text-input {
+          margin-bottom: 8px;
+          margin-left: 8px;
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
         text-input {
           margin-bottom: 8px;
@@ -48,25 +64,25 @@
           font-family: monospace;
         }
       </style>
-    </custom-style>
-  </head>
-  <body>
-    <div class="vertical-section-container centered">
+    </custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>`<div class="vertical-section-container centered">
       <h3>text-input in <code>iron-form</code></h3>
       <demo-snippet>
         <template>
           <label>
-            <input type="checkbox" checked onchange="form1.allowRedirect = !this.checked;">Prevent automatic form redirection
+            <input type="checkbox" checked="" onchange="form1.allowRedirect = !this.checked;">Prevent automatic form redirection
           </label>
           <br><br>
 
           <iron-form id="form1">
             <form action="/foo" method="get">
-              name: <text-input name="name" required value="Batman" placeholder="name"></text-input><br>
-              job: <text-input name="job" required value="Hero" placeholder="job"></text-input><br>
-              destination: <text-input name="destination" required placeholder="destination"></text-input><br>
-              cape color: <text-input name="color" default="#111" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" minlength="4" placeholder="cape color"></text-input><br>
-              email: <text-input name="email" required type="email" placeholder="your.name@gotham.org"></text-input><br>
+              name: <text-input name="name" required="" value="Batman" placeholder="name"></text-input><br>
+              job: <text-input name="job" required="" value="Hero" placeholder="job"></text-input><br>
+              destination: <text-input name="destination" required="" placeholder="destination"></text-input><br>
+              cape color: <text-input name="color" default="#111" required="" pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\$" minlength="4" placeholder="cape color"></text-input><br>
+              email: <text-input name="email" required="" type="email" placeholder="your.name@gotham.org"></text-input><br>
               <button onclick="form1.submit()">Submit</button>
               <button onclick="form1.validate()">Validate</button>
             </form>
@@ -77,8 +93,20 @@
             form1.addEventListener('iron-form-submit', function(event) {
               this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
             });
-          </script>
+          &lt;/script>
         </template>
       </demo-snippet>
-  </body>
-</html>
+  
+
+</div>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+import '@polymer/iron-demo-helpers/demo-snippet.js';
+import '@polymer/iron-form/iron-form.js';
+import '@polymer/paper-styles/shadow.js';
+import '../text-input.js';
+form1.addEventListener('iron-form-submit', function(event) {
+  this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
+});
+</script>
