@@ -1,35 +1,22 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>text-input demo</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <title>text-input demo</title>
 
-    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>-pages-shared-styles.js"></script>
-    <script type="module" src="../../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
-    <script type="module" src="../text-input.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+  <script type="module">
+    import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+    import '@polymer/iron-demo-helpers/demo-snippet';
+    import '../text-input.js';
+  </script>
 
-    <custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
-        .result {
-          margin: 0.5em;
-    <!-- FIXME(polymer-modulizer):
-        These imperative modules that innerHTML your HTML are
-        a hacky way to be sure that any mixins in included style
-        modules are ready before any elements that reference them are
-        instantiated, otherwise the CSS @apply mixin polyfill won't be
-        able to expand the underlying CSS custom properties.
-        See: https://github.com/Polymer/polymer-modulizer/issues/154
-        -->
-    <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
-        .result {
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .result {
           margin: 0.5em;
           line-height: 1.5em;
         }
@@ -37,162 +24,138 @@ $_documentContainer.innerHTML = `<custom-style>
           padding: 0.25em;
         }
       </style>
-    </custom-style>`;
+  </custom-style>
+</head>
 
-document.body.appendChild($_documentContainer.content);
-</script>>
-        <h4>Simple demo</h4>
-        <template>
-    <script type="module">
-const $_documentContainer = document.createElement('template');
+<h4>Simple demo</h4>
 
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
-      <demo-snippet>
-        <h4>Simple demo</h4>
-        <template>
-          <dom-bind>
-            <template is="dom-bind">
-              <custom-style>
-                <style is="custom-style">
-                  #simple {
-                    --input-background: rgba(0, 0, 0, 0.05);
-                    --input-transition: background 150ms ease-in-out;
-                    --input-color: #111;
-                    --input-padding: 0.3em;
-                    --input-border-radius: 0.2em;
-                    --input-focus-background: rgba(0, 0, 150, 0.15);
-                    --input-placeholder-color: #492020;
-                  }
-                </style>
-              </custom-style>
-              <input type="checkbox" checked="{{autoResize::change}}">auto resize when typing<br>
-              <text-input id="simple" value="{{value}}" input="{{input}}" placeholder="type some text..." auto-resize="[[autoResize]]"></text-input>
-              <div class="vertical-section-container result">
-                <div><code>input</code>: <b>[[input]]</b></div>
-                <div><code>value</code>: <b>[[value]]</b></div>
-              </div>
-            </template>
-          </dom-bind>
+<div class="vertical-section-container centered">
+  <demo-snippet>
+    <h4>Simple demo</h4>
+    <template>
+      <dom-bind>
+        <template is="dom-bind">
+          <custom-style>
+            <style is="custom-style">
+              #simple {
+                  --input-background: rgba(0, 0, 0, 0.05);
+                  --input-transition: background 150ms ease-in-out;
+                  --input-color: #111;
+                  --input-padding: 0.3em;
+                  --input-border-radius: 0.2em;
+                  --input-focus-background: rgba(0, 0, 150, 0.15);
+                  --input-placeholder-color: #492020;
+                }
+              </style>
+          </custom-style>
+          <input type="checkbox" checked="{{autoResize::change}}">auto resize when typing<br>
+          <text-input id="simple" value="{{value}}" input="{{input}}" placeholder="type some text..." auto-resize="[[autoResize]]"></text-input>
+          <div class="vertical-section-container result">
+            <div><code>input</code>: <b>[[input]]</b></div>
+            <div><code>value</code>: <b>[[value]]</b></div>
+          </div>
         </template>
-      </demo-snippet>
-    </div>`;
+      </dom-bind>
+    </template>
+  </demo-snippet>
+</div>
 
-document.body.appendChild($_documentContainer.content);
-</script>4>With regular expression (for hex-colors)</h4>
-        <template>
-          <dom-bind>
-    <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
-      <demo-snippet>
-        <h4>With regular expression (for hex-colors)</h4>
-        <template>
-          <dom-bind>
-            <template is="dom-bind">
-              <custom-style>
-                <style is="custom-style">
-                  #hex {
-                    --input-allign: center;
-                    --input-color: #111;
-                    --input-padding: 0.5em;
-                    --input-border-radius: 0.5em;
-                    --input-border-color: #ddd;
-                    --input-border-width: thin;
-                    --input-border-style: dotted;
-                    --input-transition: background-color 250ms ease-in-out;
-                    --input-focus-border-color: #555;
-                    --input-focus-border-style: solid;
-                    --input-focus-background: rgba(0, 0, 0, 0.15);
-                    --input-placeholder-color: #492020;
-                    --input-invalid-background: rgba(255, 0, 0, 0.15);
-                    --input-invalid-border-color: #999;
-                    --input-invalid-border-style: dashed;
-                  }
-                </style>
-              </custom-style>
-              <text-input id="hex" value="{{value}}" default="#111" required="" pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\$" minlength="7"></text-input>
-              <div class="vertical-section-container result">
-                <div><code>value</code>: <b>[[value]]</b></div>
-              </div>
-            </template>
-          </dom-bind>
+<h4>With regular expression (for hex-colors)</h4>
+<div class="vertical-section-container centered">
+  <demo-snippet>
+    <h4>With regular expression (for hex-colors)</h4>
+    <template>
+      <dom-bind>
+        <template is="dom-bind">
+          <custom-style>
+            <style is="custom-style">
+              #hex {
+                --input-allign: center;
+                --input-color: #111;
+                --input-padding: 0.5em;
+                --input-border-radius: 0.5em;
+                --input-border-color: #ddd;
+                --input-border-width: thin;
+                --input-border-style: dotted;
+                --input-transition: background-color 250ms ease-in-out;
+                --input-focus-border-color: #555;
+                --input-focus-border-style: solid;
+                --input-focus-background: rgba(0, 0, 0, 0.15);
+                --input-placeholder-color: #492020;
+                --input-invalid-background: rgba(255, 0, 0, 0.15);
+                --input-invalid-border-color: #999;
+                --input-invalid-border-style: dashed;
+              }
+            </style>
+          </custom-style>
+          <text-input id="hex" value="{{value}}" default="#111" required="" pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\$" minlength="7"></text-input>
+          <div class="vertical-section-container result">
+            <div><code>value</code>: <b>[[value]]</b></div>
+          </div>
         </template>
-      </demo-snippet>
-    </div>`;
+      </dom-bind>
+    </template>
+  </demo-snippet>
+</div>
 
-document.body.appendChild($_documentContainer.content);
-</script>emplate>
-          <dom-bind>
-            <template is="dom-bind">
-    <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
-      <demo-snippet>
-        <h4>email</h4>
-        <template>
-          <dom-bind>
-            <template is="dom-bind">
-              <custom-style>
-                <style is="custom-style">
-                  #email {
-                    --input-allign: left;
-                    --input-color: #111;
-                    --input-padding: 0.5em;
-                    --input-border-radius: 0.5em;
-                    --input-border-color: #ddd;
-                    --input-background: #63cb7a;
-                    --input-border-width: thin;
-                    --input-border-style: dotted;
-                    --input-transition: background-color 250ms ease-in-out;
-                    --input-focus-border-color: #555;
-                    --input-focus-border-style: solid;
-                    --input-focus-background: #afe0cc;
-                    --input-placeholder-color: #222049;
-                    --input-invalid-color: #555;
-                    --input-invalid-background: #f0a8a8;
-                    --input-invalid-border-color: #999;
-                    --input-invalid-border-style: dashed;
-                    --input-placeholder: {
-                      font-style: italic;
-                    };
-                  }
-                </style>
-              </custom-style>
-              <text-input id="email" type="email" value="{{value}}" required="" placeholder="your.name@domain.org"></text-input>
-              <div class="vertical-section-container result">
-                <div><code>value</code>: <b>[[value]]</b></div>
-              </div>
-            </template>
-          </dom-bind>
+<div class="vertical-section-container centered">
+  <demo-snippet>
+    <h4>email</h4>
+    <template>
+      <dom-bind>
+        <template is="dom-bind">
+          <custom-style>
+            <style is="custom-style">
+              #email {
+                --input-allign: left;
+                --input-color: #111;
+                --input-padding: 0.5em;
+                --input-border-radius: 0.5em;
+                --input-border-color: #ddd;
+                --input-background: #63cb7a;
+                --input-border-width: thin;
+                --input-border-style: dotted;
+                --input-transition: background-color 250ms ease-in-out;
+                --input-focus-border-color: #555;
+                --input-focus-border-style: solid;
+                --input-focus-background: #afe0cc;
+                --input-placeholder-color: #222049;
+                --input-invalid-color: #555;
+                --input-invalid-background: #f0a8a8;
+                --input-invalid-border-color: #999;
+                --input-invalid-border-style: dashed;
+                --input-placeholder: {
+                  font-style: italic;
+                };
+              }
+            </style>
+          </custom-style>
+          <text-input id="email" type="email" value="{{value}}" required="" placeholder="your.name@domain.org"></text-input>
+          <div class="vertical-section-container result">
+            <div><code>value</code>: <b>[[value]]</b></div>
+          </div>
         </template>
-      </demo-snippet>
-    </div>`;
+      </dom-bind>
+    </template>
+  </demo-snippet>
+</div>
 
-document.body.appendChild($_documentContainer.content);
-</script><dom-bind>
-            <template is="dom-bind">
-              <text-input value="{{value}}" input="{{input}}" minlength="5" maxlength="15" placeholder="..." auto-resize></text-input>
-    <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
-      <demo-snippet>
-        <h4>minlenght &amp; maxlength</h4>
-        <template>
-          <dom-bind>
-            <template is="dom-bind">
-              <text-input value="{{value}}" input="{{input}}" minlength="5" maxlength="15" placeholder="..." auto-resize=""></text-input>
-              <div class="vertical-section-container result">
-                <div><code>input</code>: <b>[[input]]</b></div>
-                <div><code>value</code>: <b>[[value]]</b></div>
-              </div>
-            </template>
-          </dom-bind>
+<div class="vertical-section-container centered">
+  <demo-snippet>
+    <h4>minlenght &amp; maxlength</h4>
+    <template>
+      <dom-bind>
+        <template is="dom-bind">
+          <text-input value="{{value}}" input="{{input}}" minlength="5" maxlength="15" placeholder="..." auto-resize=""></text-input>
+          <div class="vertical-section-container result">
+            <div><code>input</code>: <b>[[input]]</b></div>
+            <div><code>value</code>: <b>[[value]]</b></div>
+          </div>
         </template>
-      </demo-snippet>
-    </div>`;
+      </dom-bind>
+    </template>
+  </demo-snippet>
+</div>
+</body>
 
-document.body.appendChild($_documentContainer.content);
-</script>
+</html>

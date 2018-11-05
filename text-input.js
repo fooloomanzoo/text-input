@@ -120,6 +120,7 @@ export const TextInputMixin = dedupingMixin( superClass => {
           validationRegExp = null;
         }
       }
+      console.log(validationRegExp);
       if (validationRegExp) {
         // set validation function to validate with _validationRegExp and the _defaultValidate function
         isSet = function(value) {
