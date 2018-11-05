@@ -17,7 +17,7 @@ export const TextInputMixin = dedupingMixin( superClass => {
 
     static get styleTemplate() {
       return htmlLiteral`
-        ${super.styleTemplate || ''}
+        ${super.styleTemplate || htmlLiteral``}
         #input {
           @apply --text-input;
         }
