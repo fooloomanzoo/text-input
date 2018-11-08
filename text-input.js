@@ -179,7 +179,7 @@ export const TextInputMixin = dedupingMixin( superClass => {
  * @demo demo/index.html
  * @demo demo/iron-form.html in a form
  **/
-class TextInput extends TextInputMixin(PolymerElement) { // eslint-disable-line no-undef
+export class TextInput extends TextInputMixin(PolymerElement) { // eslint-disable-line no-undef
   static get is() {
     return 'text-input';
   }

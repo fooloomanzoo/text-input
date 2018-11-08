@@ -15,6 +15,7 @@ The normal `input` with `type="text"` is fairly good to use, but it has some fla
 
 * guarantee **live**-value to be valid
 * to be styled easily
+* auto resize on input
 
 ### Example
 ```html
