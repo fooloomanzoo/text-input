@@ -9,8 +9,8 @@
 
   <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
   <script type="module">
-    import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
-    import '@polymer/iron-demo-helpers/demo-snippet';
+    import '../../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+    import '../../../@polymer/iron-demo-helpers/demo-snippet.js';
     import '../text-input.js';
   </script>
 
@@ -47,7 +47,8 @@
                   }
                 </style>
             </custom-style>
-            <input type="checkbox" checked="{{autoResize::change}}">auto resize when typing<br>
+            <input type="checkbox" checked="{{autoResize::change}}">auto resize when typing
+            <br><br>
             <text-input id="simple" value="{{value}}" input="{{input}}" placeholder="type some text..." auto-resize="[[autoResize]]"></text-input>
             <div class="vertical-section-container result">
               <div><code>input</code>: <b>[[input]]</b></div>
@@ -86,7 +87,7 @@
                 }
               </style>
             </custom-style>
-            <text-input id="hex" value="{{value}}" default="#111" required="" pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\$" minlength="7"></text-input>
+            <text-input id="hex" value="{{value}}" default="#111" required="" pattern="#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})" minlength="7"></text-input>
             <div class="vertical-section-container result">
               <div><code>value</code>: <b>[[value]]</b></div>
             </div>

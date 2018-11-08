@@ -1,7 +1,7 @@
-import { PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { html, htmlLiteral } from '@polymer/polymer/lib/utils/html-tag.js';
-import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
-import { InputPattern } from '@fooloomanzoo/input-picker-pattern/input-pattern.js';
+import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
+import { html, htmlLiteral } from '../../@polymer/polymer/lib/utils/html-tag.js';
+import { dedupingMixin } from '../../@polymer/polymer/lib/utils/mixin.js';
+import { InputPattern } from '../../@fooloomanzoo/input-picker-pattern/input-pattern.js';
 
 /**
  * mixin to create a text-input
@@ -120,7 +120,6 @@ export const TextInputMixin = dedupingMixin( superClass => {
           validationRegExp = null;
         }
       }
-      console.log(validationRegExp);
       if (validationRegExp) {
         // set validation function to validate with _validationRegExp and the _defaultValidate function
         isSet = function(value) {
