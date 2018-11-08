@@ -1,7 +1,7 @@
 import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
 import { html, htmlLiteral } from '../../@polymer/polymer/lib/utils/html-tag.js';
 import { dedupingMixin } from '../../@polymer/polymer/lib/utils/mixin.js';
-import { InputPattern } from '../../@fooloomanzoo/input-picker-pattern/input-pattern.js';
+import { InputPattern } from '../input-picker-pattern/input-pattern.js';
 
 /**
  * mixin to create a text-input
