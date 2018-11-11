@@ -1,7 +1,7 @@
-import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
-import { html, htmlLiteral } from '../../@polymer/polymer/lib/utils/html-tag.js';
-import { dedupingMixin } from '../../@polymer/polymer/lib/utils/mixin.js';
-import { InputPattern } from '../input-picker-pattern/input-pattern.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
+import { InputPattern } from '@fooloomanzoo/input-picker-pattern/input-pattern.js';
 
 /**
  * mixin to create a text-input
@@ -14,31 +14,6 @@ import { InputPattern } from '../input-picker-pattern/input-pattern.js';
 export const TextInputMixin = dedupingMixin( superClass => {
 
   return class extends InputPattern(superClass) {
-
-    static get styleTemplate() {
-      return htmlLiteral`
-        ${super.styleTemplate || htmlLiteral``}
-        #input {
-          @apply --text-input;
-        }
-        :host(:focus) #input,
-        :host(:hover) #input,
-        #input:hover,
-        #input:focus {
-          @apply --text-input-focus;
-        }
-        :host([invalid]) #input {
-          @apply --text-input-invalid;
-        }
-        :host([disabled]) #input {
-          @apply --text-input-disabled;
-        }
-        #input::-webkit-input-placeholder,
-        #input::placeholder {
-          @apply --text-input-placeholder;
-        }
-      `;
-    }
 
     static get inputTemplate() {
       return html`
