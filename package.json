@@ -29,7 +29,7 @@
   "author": "fooloomanzoo",
   "license": "MIT",
   "dependencies": {
-    "@fooloomanzoo/input-picker-pattern": "^3.0.4",
+    "@fooloomanzoo/input-picker-pattern": "^3.0.7",
     "@polymer/polymer": "^3"
   },
   "devDependencies": {
