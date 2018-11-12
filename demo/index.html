@@ -11,22 +11,25 @@
     import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
     import '@polymer/iron-demo-helpers/demo-snippet.js';
     import '../text-input.js';
+
+    import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+    const template = html`
+      <custom-style>
+        <style is="custom-style" include="demo-pages-shared-styles">
+          .result {
+            margin: 0.5em;
+            line-height: 1.5em;
+          }
+          .result * {
+            padding: 0.25em;
+          }
+        </style>
+      </custom-style>`;
+    document.body.appendChild(template.content);
   </script>
-
-  <custom-style>
-    <style is="custom-style" include="demo-pages-shared-styles">
-      .result {
-          margin: 0.5em;
-          line-height: 1.5em;
-        }
-        .result * {
-          padding: 0.25em;
-        }
-      </style>
-  </custom-style>
 </head>
-<body>
 
+<body>
   <div class="vertical-section-container centered">
     <demo-snippet>
       <h4>Simple demo</h4>
