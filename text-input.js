@@ -152,7 +152,7 @@ export const TextInputMixin = dedupingMixin( superClass => {
  * @appliesMixin TextInputMixin
  *
  * @demo demo/index.html
- * @demo demo/iron-form.html in a form
+ * @demo demo/form.html in a form
  **/
 export class TextInput extends TextInputMixin(PolymerElement) {
   static get is() {

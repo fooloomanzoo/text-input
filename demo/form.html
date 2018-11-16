@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>text-input in iron-form demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <script>if (!window.customElements) { document.write('<!--'); }</script>
+    <script src="https://fooloomanzoo.github.io/input-picker-pattern/demo/dist/custom-elements-es5-adapter.js"></script>
+    <!--! DO NOT REMOVE THIS COMMENT, WE NEED ITS CLOSING MARKER -->
+
+    <style>
+      body {
+        font-family: 'Roboto', 'Noto', sans-serif;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>text-input in <code>iron-form</code></h3>
+      <demo-snippet>
+        <template>
+          <label>
+            <input type="checkbox" checked="" onchange="form1.allowRedirect = !this.checked;">Prevent automatic form redirection
+          </label>
+          <br><br>
+
+          <iron-form id="form1">
+            <form action="/foo" method="get">
+              name: <text-input name="name" required="" value="Batman" placeholder="name"></text-input><br>
+              job: <text-input name="job" required="" value="Hero" placeholder="job"></text-input><br>
+              destination: <text-input name="destination" required="" placeholder="destination"></text-input><br>
+              cape color: <text-input name="color" value="#111" required pattern="#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})" minlength="4" placeholder="cape color"></text-input><br>
+              email: <text-input name="email" required="" type="email" placeholder="your.name@gotham.org"></text-input><br>
+              <button onclick="form1.submit()">Submit</button>
+              <button onclick="form1.validate()">Validate</button>
+            </form>
+            <br>
+            <div class="output"></div>
+          </iron-form>
+          <script>
+            form1.addEventListener('iron-form-submit', function(event) {
+              this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
+            });
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <!-- Load the external helpers to run the code transpiled to ES5 -->
+    <script src="https://fooloomanzoo.github.io/input-picker-pattern/demo/dist/babel-helpers.min.js"></script>
+    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <script src="https://fooloomanzoo.github.io/input-picker-pattern/demo/dist/webcomponents-loader.js"></script>
+    <!-- Load bundled dependencies for the demos -->
+    <script src="./dist/demo-form-import.js"></script>
+  </body>
+</html>

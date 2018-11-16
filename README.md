@@ -1,10 +1,7 @@
 [![Published on NPM](https://img.shields.io/npm/v/@fooloomanzoo/text-input.svg)](https://www.npmjs.com/package/@fooloomanzoo/text-input)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@fooloomanzoo/text-input)
-[![API](https://img.shields.io/badge/API-available-green.svg)](https://www.webcomponents.org/element/fooloomanzoo/@text-input/elements/text-input)
-[![Demo](https://img.shields.io/badge/demo-available-red.svg)](https://www.webcomponents.org/element/fooloomanzoo/@text-input/demo/demo/index.html)
 
-_[API](https://fooloomanzoo.github.io/text-input/components/text-input/#/elements/text-input)_ and
-_[Demo](https://fooloomanzoo.github.io/text-input/components/text-input/#/elements/text-input/demos/demo/index.html)_
+_[API & Demo](https://fooloomanzoo.github.io/text-input)_
 
 ## \<text-input\>
 
